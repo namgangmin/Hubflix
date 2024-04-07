@@ -14,7 +14,6 @@ class Contents(models.Model):
     have_ott = models.IntegerField(blank=True, null=True, db_comment='해당 컨텐츠를 보유한 OTT')
     runtime = models.IntegerField(blank=True, null=True, db_comment='런타임(분)')
     genre = models.CharField(max_length=100)
-    image = models.TextField(blank=True, null=True, db_comment='포스터 이미지를 저장')
 
     class Meta:
         managed = False
@@ -23,9 +22,9 @@ class Contents(models.Model):
 
 
 class HaveOtt(models.Model):
-    contents_id = models.CharField(max_length=100, db_comment='컨텐츠 아이디')
-    ott_name = models.CharField(max_length=100, db_comment='OTT 이름')
     have_ott_num = models.IntegerField(primary_key=True)
+    contents = models.ForeignKey(Contents, models.DO_NOTHING, db_comment='컨텐츠 아이디')
+    ott_name = models.ForeignKey('Ott', models.DO_NOTHING, db_column='ott_name', db_comment='OTT 이름')
 
     class Meta:
         managed = False
@@ -68,6 +67,14 @@ class Review(models.Model):
         managed = False
         db_table = 'review'
         db_table_comment = 'store review information, 리뷰 정보 저장'
+
+
+class Test(models.Model):
+    test = models.IntegerField(primary_key=True)
+
+    class Meta:
+        managed = False
+        db_table = 'test'
 
 
 class UserLinkInfo(models.Model):

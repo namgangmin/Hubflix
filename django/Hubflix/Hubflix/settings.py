@@ -79,10 +79,10 @@ WSGI_APPLICATION = "Hubflix.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "Hubflix",
-        "USER" : 'gangmin',
+        "NAME": "HubFlix",
+        "USER" : 'nnn',
         "PASSWORD" : '0000',
-        "HOST" : "localhost",
+        "HOST" : "3.137.152.78",
         "PORT" : "3306"
     }
 }
