@@ -4,16 +4,23 @@ from django.db import models
 
 class Contents(models.Model):
     contents_id = models.CharField(primary_key=True, max_length=100, db_comment='컨텐츠의 고유 ID')
-    title = models.CharField(max_length=100, db_comment='컨텐츠의 제목')
+    title = models.CharField(max_length=255, db_comment='컨텐츠의 제목')
     type = models.CharField(max_length=10, db_comment='컨텐츠 타입(시리즈나 드라마 또는 영화)')
     production_countries = models.CharField(max_length=200, db_comment='제작 나라')
     characters = models.CharField(max_length=100, blank=True, null=True, db_comment='등장인물')
     seasons_number = models.IntegerField(blank=True, null=True, db_comment='시즌 수')
     release_date = models.DateField(blank=True, null=True, db_comment='개봉 날짜')
-    summary = models.CharField(max_length=300, blank=True, null=True, db_comment='줄거리')
+    overview = models.CharField(max_length=300, blank=True, null=True, db_comment='줄거리')
     have_ott = models.IntegerField(blank=True, null=True, db_comment='해당 컨텐츠를 보유한 OTT')
     runtime = models.IntegerField(blank=True, null=True, db_comment='런타임(분)')
     genre = models.CharField(max_length=100)
+    vote_count = models.IntegerField(blank=True, null=True)
+    adult = models.IntegerField(blank=True, null=True)
+    vote_average = models.IntegerField(blank=True, null=True)
+    poster_path = models.TextField(blank=True, null=True)
+    rent = models.CharField(max_length=100, blank=True, null=True, db_comment='대여')
+    buy = models.CharField(max_length=100, blank=True, null=True, db_comment='구매')
+    flatrate = models.CharField(max_length=100, blank=True, null=True, db_comment='구독')
 
     class Meta:
         managed = False
