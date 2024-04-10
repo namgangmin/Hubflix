@@ -9,7 +9,7 @@ class Contents(models.Model):
     characters = models.CharField(max_length=100, blank=True, null=True, db_comment='등장인물')
     seasons_number = models.IntegerField(blank=True, null=True, db_comment='시즌 수')
     release_date = models.DateField(blank=True, null=True, db_comment='개봉 날짜')
-    overview = models.CharField(max_length=300, blank=True, null=True, db_comment='줄거리')
+    overview = models.CharField(max_length=5000, blank=True, null=True, db_comment='줄거리')
     have_ott = models.IntegerField(blank=True, null=True, db_comment='해당 컨텐츠를 보유한 OTT')
     runtime = models.IntegerField(blank=True, null=True, db_comment='런타임(분)')
     genre = models.CharField(max_length=100)
