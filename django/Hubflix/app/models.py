@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Contents(models.Model):
     contents_id = models.CharField(primary_key=True, max_length=100, db_comment='컨텐츠의 고유 ID')
@@ -74,14 +73,6 @@ class Review(models.Model):
         managed = False
         db_table = 'review'
         db_table_comment = 'store review information, 리뷰 정보 저장'
-
-
-class Test(models.Model):
-    test = models.IntegerField(primary_key=True)
-
-    class Meta:
-        managed = False
-        db_table = 'test'
 
 
 class UserLinkInfo(models.Model):
