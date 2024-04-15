@@ -21,32 +21,31 @@ for pageNum in range(1, 50):
     #data = json.loads(response.text)
     for item in data["results"]:
         #try:
-            dict = {"model" : "app.contents",
-                    "pk" : item['id'],
-                    'fields': {
-                        "title": item['title'],
-                        "type" : "movie",   
-                        "production_countries" : "미상",
-                        "characters" : "미상",
-                        "seasons_number" : 1,
-                        "release_date": item['release_date'],
-                        "overview": item['overview'],
-                        "runtime" : 123,
-                        "genre": item['genre_ids'][0],
-                        "vote_count" : item['vote_count'],
-                        "adult": item['adult'],
-                        "vote_average" : item['vote_average'],
-                        "poster_path": item['poster_path'],
-                        "rent": "test",
-                        "buy": "test",
-                        "flatrate": "test"
-                    }}
-            movie_res.append(dict)
+        if item['release_date'] == "":
+            continue
+        dict = {"model" : "app.contents",
+                "pk" : item['id'],
+                'fields': {
+                    "title": item['title'],
+                    "type" : "movie",   
+                    "production_countries" : "미상",
+                    "characters" : "미상",
+                    "seasons_number" : 1,
+                    "release_date": item['release_date'],
+                    "overview": item['overview'],
+                    "runtime" : 123,
+                    "genre": item['genre_ids'][0],
+                    "vote_count" : item['vote_count'],
+                    "adult": item['adult'],
+                    "vote_average" : item['vote_average'],
+                    "poster_path": item['poster_path'],
+                    "rent": "test",
+                    "buy": "test",
+                    "flatrate": "test"
+                }}
+        movie_res.append(dict)
         #except:
         #    pass
-
-
-print(movie_res)
 
 with open('movie_00.json', "w", encoding='utf-8') as f:
 

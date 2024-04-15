@@ -82,7 +82,7 @@ DATABASES = {
         "NAME": "Hubflix",
         "USER" : 'nnn',
         "PASSWORD" : '0000',
-        "HOST" : "3.35.3.242",
+        "HOST" : "13.209.231.102",
         "PORT" : "3306"
     }
 }
