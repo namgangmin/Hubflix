@@ -26,16 +26,10 @@ class OttSerializer(serializers.ModelSerializer):
         fields = '__all__'          # 모든 필드 포함
 
 
-class User_link_infoSerializer(serializers.ModelSerializer):
+class UserlinkinfoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User_link_info    # UserInterworking 모델 사용
+        model = UserLinkInfo    # UserInterworking 모델 사용
         fields = '__all__'          # 모든 필드 포함
-
-
-class Have_ottSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Have_ott           # Users 모델 사용
-        fields = '__all__'      # 모든 필드 포함
 
 
 class ReviewSerializer(serializers.ModelSerializer):

@@ -12,8 +12,8 @@ api_key = 'f728b799913e9a49c46409571626d786'
 ## Movie 모델 데이터 API 요청
 # API 결과를 JSON형식으로 담을 리스트
 movie_res = []
-
-for pageNum in range(1, 50):
+# 인기있는 페이지 순서대로 값을 받아오는 코드
+for pageNum in range(1,50):
     url = f'https://api.themoviedb.org/3/movie/popular?api_key={api_key}&language=ko-KR&page={pageNum}'
     print(url)
     response = requests.get(url)
@@ -122,9 +122,9 @@ for pageNum in range(1, 50):
                     "keyword" : keyword
                 }}            
         movie_res.append(dict)
-        #except:
-        #    pass
+            #except:
+            #    pass
 
-with open('movie_00.json', "w", encoding='utf-8') as f:
+with open('movie_char_keywo.json', "w", encoding='utf-8') as f:
 
     json.dump(movie_res,f, ensure_ascii=False,indent=4)

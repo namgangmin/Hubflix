@@ -1,0 +1,140 @@
+[
+    {
+        "model": "app.contents",
+        "pk": 2,
+        "fields": {
+            "title": "아리엘",
+            "type": "movie",
+            "characters": "Turo Pajala: Taisto Kasurinen,Susanna Haavisto: Irmeli Pihlaja,Matti Pellonpää: Mikkonen,Eetu Hilkamo: Riku,Erkki Pajala: Miner,Matti Jaaranen: Mugger,Hannu Viholainen: Accomplice,Jorma Markkula: Tallyman,Tarja Keinänen: Woman in Harbour",
+            "seasons_number": 0,
+            "release_date": "1988-10-21",
+            "overview": "광부 카스리넨은 광산이 문을 닫으면서 무작정 길을 떠났다가 미혼모를 만나 사랑에 빠진다. 그러나 두 사람은 우연히 살인 사건에 휘말리고, 남미로 가는 밀항선 아리엘 호를 타고 탈출하는 신세가 되는데...",
+            "runtime": 73,
+            "genre": "드라마,코미디,로맨스,범죄",
+            "vote_count": 310,
+            "adult": false,
+            "vote_average": 7.09,
+            "poster_path": "/3Bt8Tytl9gCRxShdmup7gN8AWSg.jpg",
+            "rent": "한국에서 지원하는 OTT서비스 없음",
+            "buy": "한국에서 지원하는 OTT서비스 없음",
+            "flatrate": "MUBI",
+            "popularity": 15.326,
+            "keyword": "prison,underdog,helsinki, finland,factory worker,prisoner,falling in love"
+        }
+    },
+    {
+        "model": "app.contents",
+        "pk": 3,
+        "fields": {
+            "title": "천국의 그림자",
+            "type": "movie",
+            "characters": "Matti Pellonpää: Nikander,Kati Outinen: Ilona,Sakari Kuosmanen: Melartin,Esko Nikkari: Nikander's Co-Worker,Kylli Köngäs: Ilona's Friend,Pekka Laiho: Store Manager,Jukka-Pekka Palo: Third Man,Svante Korkiakoski: Police Officer,Mari Rantasila: Nikander's Sister",
+            "seasons_number": 0,
+            "release_date": "1986-10-17",
+            "overview": "청소부이자 사업가 지망생인 니칸더는 어느 날 동네 슈퍼마켓에서 계산원 일로나를 만난다. 어디서나 냉대 받던 두 사람 사이에는 미묘한 유대감이 형성되기 시작한다. 하지만 세탁소 사장이 그 둘 앞에 나타나고 일로나는 더 이상 니칸더를 만나주지 않는데...",
+            "runtime": 76,
+            "genre": "드라마,코미디,로맨스",
+            "vote_count": 354,
+            "adult": false,
+            "vote_average": 7.292,
+            "poster_path": "/o2cWCX48flnEgDwSWu0Gpia0i0N.jpg",
+            "rent": "한국에서 지원하는 OTT서비스 없음",
+            "buy": "한국에서 지원하는 OTT서비스 없음",
+            "flatrate": "한국에서 지원하는 OTT서비스 없음",
+            "popularity": 9.996,
+            "keyword": "helsinki, finland,salesclerk,garbage"
+        }
+    },
+    {
+        "model": "app.contents",
+        "pk": 5,
+        "fields": {
+            "title": "포룸",
+            "type": "movie",
+            "characters": "Tim Roth: Ted the Bellhop,Jennifer Beals: Angela,Antonio Banderas: Man,Valeria Golino: Athena,David Proval: Siegfried,Sammi Davis: Jezebel,Amanda de Cadenet: Diana,Madonna: Elspeth,Ione Skye: Eva",
+            "seasons_number": 0,
+            "release_date": "1995-12-09",
+            "overview": "새해 전날 밤, LA 몽시뇰 호텔에서 첫근무를 하게 된 괴짜 벨보이 테드는 상상조차 할 수 없는 최악의 밤을 맞이한다. 허니문 스위트룸에 투숙한 마녀들의 부활의식에 야릇한 제물로 걸려드는가 하면, 얼음 배달차 들른 룸 404호의 악당 지그프리드는 아내의 정부라고 오해를 한다. 5백 달러를 받고 돌봐주기로 한 룸 309호 갱스터 부부의 꼬마 악동들은 시끌벅적한 소란을 벌이며 방 한 칸을 홀라당 날려버린다. 마지막 펜트하우스 특실 룸에는 할리우드 최고의 코미디언 체스터 러쉬와 그의 친구들이 벌이는 잔인한 내기에 엉겁결에 끼어들게 된 테드는 피할 수 없는 희생양이 될 판이 된다.",
+            "runtime": 98,
+            "genre": "코미디",
+            "vote_count": 2549,
+            "adult": false,
+            "vote_average": 5.823,
+            "poster_path": "/75aHn1NOYXh4M7L5shoeQ6NGykP.jpg",
+            "rent": "한국에서 지원하는 OTT서비스 없음",
+            "buy": "한국에서 지원하는 OTT서비스 없음",
+            "flatrate": "한국에서 지원하는 OTT서비스 없음",
+            "popularity": 30.453,
+            "keyword": "hotel,new year's eve,witch,bet,sperm,hotel room,anthology,los angeles, california,hoodlum,multiple storylines,woman director"
+        }
+    },
+    {
+        "model": "app.contents",
+        "pk": 6,
+        "fields": {
+            "title": "킬러 나이트",
+            "type": "movie",
+            "characters": "Emilio Estevez: Frank Wyatt,Cuba Gooding Jr.: Mike Peterson,Denis Leary: Fallon,Stephen Dorff: John Wyatt,Jeremy Piven: Ray Cochran,Peter Greene: Sykes,Michael DeLorenzo: Teddy, the Kid,Everlast: Rhodes,Michael Wiseman: Travis",
+            "seasons_number": 0,
+            "release_date": "1993-10-15",
+            "overview": "어느날 프랭크(Frank Wyatt: 에밀리오 에스테베즈 분)와 마이크(Mike Peterson: 쿠바 구딩 주니어 분), 그리고 레이(Ray Cochran: 제레미 피번 분)와 프랭크의 동생 존(John Wyatt: 스티븐 도프 분)은 권투시합을 구경하기 위해 레이가 빌린 이동주택차를 몰고 시합장으로 간다. 그러나 꽉 막힌 교통에 지친 레이는 지름길로 간다며 빈민가로 들어간다. 긴장했던 탓에 그들은 차옆에 쓰러져 있는 사람을 자신들이 친줄 알고 차안으로 끌어들인다. 그리고 그 남자가 총상을 입은 것을 보고 놀란다. 갑자기 나타난 필론(Fallon: 데니스 레리 분)이란 악당들은 총상을 입은 사람이 필론으로부터 돈을 훔쳤다며 그 자리에서 그를 죽인다. 이를 목격한 프랭크와 친구들은 증인마저 없애려 드는 그들에게서 도망친다. 그러나 전화조차 없고 도와주는 이 조차 없는 그들에게 상황은 점점 악화되어 간다. 가까스로 도움을 받아 경찰에 전화를 걸지만 경찰은 오지 않고 레이는 악당들의 손에 죽고 만다. 슈퍼마켓을 발견한 그들은 경찰을 오게 하려고 일부러 유리창을 깨지만 그곳까지 일당이 따라와 존과 마이크는 부상을 입게 되고 마지막까지 무사했던 프랭크는 도움을 청하겠다며 나갔다가 악당 일행 중 유일하게 살아남은 두목 필론과 정면으로 대결하게 되는데...",
+            "runtime": 109,
+            "genre": "액션,범죄,스릴러",
+            "vote_count": 321,
+            "adult": false,
+            "vote_average": 6.5,
+            "poster_path": "/3rvvpS9YPM5HB2f4HYiNiJVtdam.jpg",
+            "rent": "한국에서 지원하는 OTT서비스 없음",
+            "buy": "한국에서 지원하는 OTT서비스 없음",
+            "flatrate": "한국에서 지원하는 OTT서비스 없음",
+            "popularity": 18.88,
+            "keyword": "drug dealer,chicago, illinois,escape,one night,boxing"
+        }
+    },
+    {
+        "model": "app.contents",
+        "pk": 8,
+        "fields": {
+            "title": "Life in Loops (A Megacities RMX)",
+            "type": "movie",
+            "characters": "",
+            "seasons_number": 0,
+            "release_date": "2006-01-01",
+            "overview": "",
+            "runtime": 80,
+            "genre": "다큐멘터리",
+            "vote_count": 28,
+            "adult": false,
+            "vote_average": 7.3,
+            "poster_path": "/7ln81BRnPR2wqxuITZxEciCe1lc.jpg",
+            "rent": "DocAlliance Films",
+            "buy": "DocAlliance Films",
+            "flatrate": "GuideDoc,DocAlliance Films",
+            "popularity": 3.156,
+            "keyword": "megacities"
+        }
+    },
+    {
+        "model": "app.contents",
+        "pk": 9,
+        "fields": {
+            "title": "Sonntag im August",
+            "type": "movie",
+            "characters": "Rita Lengyel: Alexandra,Milton Welsh: Er",
+            "seasons_number": 0,
+            "release_date": "2004-09-02",
+            "overview": "",
+            "runtime": 15,
+            "genre": "드라마",
+            "vote_count": 27,
+            "adult": false,
+            "vote_average": 7.1,
+            "poster_path": null,
+            "rent": "한국에서 지원하는 OTT서비스 없음",
+            "buy": "한국에서 지원하는 OTT서비스 없음",
+            "flatrate": "한국에서 지원하는 OTT서비스 없음",
+            "popularity": 3.713,
+            "keyword": "dying and death,sailboat"
+        }
+    }
+]

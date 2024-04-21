@@ -74,7 +74,7 @@ class Contents(models.Model):
     contents_id = models.CharField(primary_key=True, max_length=100, db_comment='컨텐츠의 고유 ID')
     title = models.CharField(max_length=255, db_comment='컨텐츠의 제목')
     type = models.CharField(max_length=10, db_comment='컨텐츠 타입(시리즈나 드라마 또는 영화)')
-    characters = models.CharField(max_length=100, blank=True, null=True, db_comment='등장인물')
+    characters = models.CharField(max_length=1000, blank=True, null=True, db_comment='등장인물')
     seasons_number = models.IntegerField(blank=True, null=True, db_comment='시즌 수')
     release_date = models.DateField(blank=True, null=True, db_comment='개봉 날짜')
     overview = models.CharField(max_length=5000, blank=True, null=True, db_comment='줄거리')
@@ -88,6 +88,7 @@ class Contents(models.Model):
     buy = models.CharField(max_length=100, blank=True, null=True, db_comment='구매')
     flatrate = models.CharField(max_length=100, blank=True, null=True, db_comment='구독')
     popularity = models.IntegerField(blank=True, null=True)
+    keyword = models.CharField(max_length=1000, blank=True, null=True, db_comment='키워드')
 
     class Meta:
         managed = False
@@ -140,17 +141,6 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class HaveOtt(models.Model):
-    have_ott_num = models.IntegerField(primary_key=True)
-    contents = models.ForeignKey(Contents, models.DO_NOTHING, db_comment='컨텐츠 아이디')
-    ott_name = models.ForeignKey('Ott', models.DO_NOTHING, db_column='ott_name', db_comment='OTT 이름')
-
-    class Meta:
-        managed = False
-        db_table = 'have_ott'
-        db_table_comment = 'OTT information contained in content, 컨텐츠가 가지고 있는 OTT 정보'
-
-
 class Ott(models.Model):
     ott_name = models.CharField(primary_key=True, max_length=100, db_comment='OTT 이름')
     ott_icon = models.TextField(blank=True, null=True, db_comment='OTT 아이콘(이미지)')
@@ -194,7 +184,7 @@ class UserLinkInfo(models.Model):
     ott_name = models.ForeignKey(Ott, models.DO_NOTHING, db_column='ott_name', db_comment='연동할 OTT의 이름')
     ott_id = models.CharField(max_length=50, db_comment='연동할 OTT의 ID')
     ott_password = models.CharField(max_length=100, db_comment='연동할 OTT의 비밀번호')
-    ott_profile = models.CharField(max_length=45, blank=True, null=True, db_comment='연동할 OTT의 프로필')
+    ott_profile = models.CharField(max_length=45, blank=True, null=True, db_comment='연동할 OTT의 프로필')        
 
     class Meta:
         managed = False
