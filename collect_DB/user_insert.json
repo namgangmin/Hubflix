@@ -1,0 +1,262 @@
+[
+    {
+        "model": "app.users",
+        "pk": "a0",
+        "fields": {
+            "password": 1234,
+            "name": "우천전",
+            "email": "a7mfzy82@kakao.com",
+            "phone_number": "010-6973-4832",
+            "nickname": "비싼 미어캣",
+            "gender": 1,
+            "birth": "1949-01-09"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a1",
+        "fields": {
+            "password": 1234,
+            "name": "정래로",
+            "email": "x0hbzz4o@gmail.com",
+            "phone_number": "010-6470-8392",
+            "nickname": "배고픈 비버",
+            "gender": 2,
+            "birth": "1948-12-19"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a2",
+        "fields": {
+            "password": 1234,
+            "name": "한초찬",
+            "email": "yfns@gmail.com",
+            "phone_number": "010-4051-7018",
+            "nickname": "철학적인 강아지",
+            "gender": 1,
+            "birth": "1912-01-17"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a3",
+        "fields": {
+            "password": 1234,
+            "name": "유호담",
+            "email": "lfwyi@gmail.com",
+            "phone_number": "010-5270-8072",
+            "nickname": "밝은 여우",
+            "gender": 1,
+            "birth": "1994-01-14"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a4",
+        "fields": {
+            "password": 1234,
+            "name": "윤애하",
+            "email": "lhnvif@gmail.com",
+            "phone_number": "010-0763-6278",
+            "nickname": "귀여운 치타",
+            "gender": 1,
+            "birth": "1913-03-08"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a5",
+        "fields": {
+            "password": 1234,
+            "name": "서문찬덕",
+            "email": "wyzhmrku@naver.com",
+            "phone_number": "010-8135-6019",
+            "nickname": "비싼 여우",
+            "gender": 2,
+            "birth": "1926-05-20"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a6",
+        "fields": {
+            "password": 1234,
+            "name": "최사로",
+            "email": "szrlehyam@naver.com",
+            "phone_number": "010-2083-9458",
+            "nickname": "밝은 문어",
+            "gender": 2,
+            "birth": "2007-10-06"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a7",
+        "fields": {
+            "password": 1234,
+            "name": "남마자",
+            "email": "uzk096v@naver.com",
+            "phone_number": "010-1058-5627",
+            "nickname": "배고픈 호랑이",
+            "gender": 1,
+            "birth": "1931-11-25"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a8",
+        "fields": {
+            "password": 1234,
+            "name": "황애문",
+            "email": "l5z3er1@kakao.com",
+            "phone_number": "010-3182-1864",
+            "nickname": "배고픈 치타",
+            "gender": 2,
+            "birth": "2006-03-27"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a9",
+        "fields": {
+            "password": 1234,
+            "name": "고병새",
+            "email": "l58nrp2a@naver.com",
+            "phone_number": "010-3015-3460",
+            "nickname": "귀여운 부엉이",
+            "gender": 2,
+            "birth": "1952-12-26"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a10",
+        "fields": {
+            "password": 1234,
+            "name": "안장천",
+            "email": "xpdz7f@naver.com",
+            "phone_number": "010-8697-5723",
+            "nickname": "예쁜 강아지",
+            "gender": 1,
+            "birth": "1991-07-11"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a11",
+        "fields": {
+            "password": 1234,
+            "name": "배나주",
+            "email": "b9mn@kakao.com",
+            "phone_number": "010-8039-7051",
+            "nickname": "푸른 강아지",
+            "gender": 1,
+            "birth": "1964-09-16"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a12",
+        "fields": {
+            "password": 1234,
+            "name": "조로지",
+            "email": "nhmv3@gmail.com",
+            "phone_number": "010-1637-5401",
+            "nickname": "푸른 미어캣",
+            "gender": 1,
+            "birth": "1963-10-29"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a13",
+        "fields": {
+            "password": 1234,
+            "name": "노빛문",
+            "email": "k31utczxw@gmail.com",
+            "phone_number": "010-2601-8674",
+            "nickname": "귀여운 치타",
+            "gender": 1,
+            "birth": "1928-02-12"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a14",
+        "fields": {
+            "password": 1234,
+            "name": "서서애",
+            "email": "lpb5k@kakao.com",
+            "phone_number": "010-4835-5216",
+            "nickname": "슬픈 문어",
+            "gender": 1,
+            "birth": "1930-04-06"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a15",
+        "fields": {
+            "password": 1234,
+            "name": "권복경",
+            "email": "v7zzc@gmail.com",
+            "phone_number": "010-5271-3817",
+            "nickname": "화난 강아지",
+            "gender": 2,
+            "birth": "1975-04-01"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a16",
+        "fields": {
+            "password": 1234,
+            "name": "정태하",
+            "email": "i24cahx3@naver.com",
+            "phone_number": "010-5186-1043",
+            "nickname": "밝은 호랑이",
+            "gender": 2,
+            "birth": "1989-09-09"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a17",
+        "fields": {
+            "password": 1234,
+            "name": "남요혁",
+            "email": "f1shemv@naver.com",
+            "phone_number": "010-9716-8510",
+            "nickname": "예쁜 부엉이",
+            "gender": 1,
+            "birth": "1973-08-30"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a18",
+        "fields": {
+            "password": 1234,
+            "name": "신옥해",
+            "email": "dc46@naver.com",
+            "phone_number": "010-6437-2309",
+            "nickname": "비싼 부엉이",
+            "gender": 1,
+            "birth": "1966-01-24"
+        }
+    },
+    {
+        "model": "app.users",
+        "pk": "a19",
+        "fields": {
+            "password": 1234,
+            "name": "양고주",
+            "email": "sn8mb@gmail.com",
+            "phone_number": "010-2415-1259",
+            "nickname": "철학적인 문어",
+            "gender": 1,
+            "birth": "1970-06-18"
+        }
+    }
+]
