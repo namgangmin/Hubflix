@@ -1,0 +1,242 @@
+[
+    {
+        "model": "app.ott",
+        "pk": "Google Play Movies",
+        "fields": {
+            "ott_icon": "/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg",
+            "ott_id": 3
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Netflix",
+        "fields": {
+            "ott_icon": "/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg",
+            "ott_id": 8
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "MUBI",
+        "fields": {
+            "ott_icon": "/fj9Y8iIMFUC6952HwxbGixTQPb7.jpg",
+            "ott_id": 11
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Naver Store",
+        "fields": {
+            "ott_icon": "/crFbxg6jkiKc14gpIGMkre9Y3mu.jpg",
+            "ott_id": 96
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Watcha",
+        "fields": {
+            "ott_icon": "/5gmEivxOGPdq4Afpq1f8ktLtEW1.jpg",
+            "ott_id": 97
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "GuideDoc",
+        "fields": {
+            "ott_icon": "/eKVmLFHW5PeNhuR7Nedd8OIxW2M.jpg",
+            "ott_id": 100
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Amazon Prime Video",
+        "fields": {
+            "ott_icon": "/dQeAar5H991VYporEjUspolDarG.jpg",
+            "ott_id": 119
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Curiosity Stream",
+        "fields": {
+            "ott_icon": "/oR1aNm1Qu9jQBkW4VrGPWhqbC3P.jpg",
+            "ott_id": 190
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Crunchyroll",
+        "fields": {
+            "ott_icon": "/mXeC4TrcgdU6ltE9bCBCEORwSQR.jpg",
+            "ott_id": 283
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Sun Nxt",
+        "fields": {
+            "ott_icon": "/6KEQzITx2RrCAQt5Nw9WrL1OI8z.jpg",
+            "ott_id": 309
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Hoichoi",
+        "fields": {
+            "ott_icon": "/u7dwMceEbjxd1N3TLEUBILSK2x6.jpg",
+            "ott_id": 315
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Disney Plus",
+        "fields": {
+            "ott_icon": "/97yvRBw1GzX7fXprcF80er19ot.jpg",
+            "ott_id": 337
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Apple TV Plus",
+        "fields": {
+            "ott_icon": "/2E03IAZsX4ZaUqM7tXlctEPMGWS.jpg",
+            "ott_id": 350
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "wavve",
+        "fields": {
+            "ott_icon": "/hPcjSaWfMwEqXaCMu7Fkb529Dkc.jpg",
+            "ott_id": 356
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Dekkoo",
+        "fields": {
+            "ott_icon": "/x6nRFzF32hCzMHaVM4RHRo7lsgS.jpg",
+            "ott_id": 444
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Classix",
+        "fields": {
+            "ott_icon": "/uFjAjvrKMII0H766QzyHDNkZdKX.jpg",
+            "ott_id": 445
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "DOCSVILLE",
+        "fields": {
+            "ott_icon": "/5zqbck5mo8PuVbGu2ngBUdn5Yga.jpg",
+            "ott_id": 475
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Spamflix",
+        "fields": {
+            "ott_icon": "/k2YgZyxij5RcnS1qqUYEUrJB4oQ.jpg",
+            "ott_id": 521
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Plex",
+        "fields": {
+            "ott_icon": "/vLZKlXUNDcZR7ilvfY9Wr9k80FZ.jpg",
+            "ott_id": 538
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "WOW Presents Plus",
+        "fields": {
+            "ott_icon": "/6dET59jNU0ADysghEjl8Unuc7Ca.jpg",
+            "ott_id": 546
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Magellan TV",
+        "fields": {
+            "ott_icon": "/mSH24WQcRDJ2fsL5iucXqqRnSRb.jpg",
+            "ott_id": 551
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "BroadwayHD",
+        "fields": {
+            "ott_icon": "/6IYZ4NjwPikxN7J9cfSmuyeHeMm.jpg",
+            "ott_id": 554
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Filmzie",
+        "fields": {
+            "ott_icon": "/eUBxtrqO26wAJfYOZJOzhQEo3mm.jpg",
+            "ott_id": 559
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "True Story",
+        "fields": {
+            "ott_icon": "/aRPDQvVcpeY07sjI6lAALMCL0ti.jpg",
+            "ott_id": 567
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "DocAlliance Films",
+        "fields": {
+            "ott_icon": "/vbXJBJVv3u3YWt6ml0l0ldDblXT.jpg",
+            "ott_id": 569
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Eventive",
+        "fields": {
+            "ott_icon": "/fwx5Ed64TkfWiRH1SOSkc4781Ts.jpg",
+            "ott_id": 677
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Cultpix",
+        "fields": {
+            "ott_icon": "/uauVx3dGWt0GICqdMCBYJObd3Mo.jpg",
+            "ott_id": 692
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "FilmBox+",
+        "fields": {
+            "ott_icon": "/fbveJTcro9Xw2KuPIIoPPePHiwy.jpg",
+            "ott_id": 701
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Takflix",
+        "fields": {
+            "ott_icon": "/ed0vz5bryWIhQB5sHiuGvHKnHHn.jpg",
+            "ott_id": 1771
+        }
+    },
+    {
+        "model": "app.ott",
+        "pk": "Netflix basic with Ads",
+        "fields": {
+            "ott_icon": "/kICQccvOh8AIBMHGkBXJ047xeHN.jpg",
+            "ott_id": 1796
+        }
+    }
+]
