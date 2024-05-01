@@ -10,19 +10,19 @@ class ContentsSerializer(serializers.ModelSerializer):
 
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Users    # ContentsEpisodes 모델 사용
+        model = Users    # Users 모델 사용
         fields = '__all__'          # 모든 필드 포함
 
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Post  # ContentsReview 모델 사용
+        model = Post  # Post 모델 사용
         fields = '__all__'      # 모든 필드 포함
 
 
 class OttSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Ott     # ContentsSeasons 모델 사용
+        model = Ott     # Ott 모델 사용
         fields = '__all__'          # 모든 필드 포함
 
 
@@ -34,6 +34,11 @@ class UserlinkinfoSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Review     # WatchingLog 모델 사용
+        model = Review     # ContentsReview 모델 사용
+        fields = '__all__'      # 모든 필드 포함
+
+class WatchingLogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WatchingLog     # WatchingLog 모델 사용
         fields = '__all__'      # 모든 필드 포함
 

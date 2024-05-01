@@ -213,7 +213,9 @@ class WatchingLog(models.Model):
     watch_num = models.IntegerField()
     contents = models.ForeignKey(Contents, models.DO_NOTHING, blank=True, null=True)
     user_link_num = models.ForeignKey(UserLinkInfo, models.DO_NOTHING, db_column='user_link_num', blank=True, null=True)
-
+    contents_title = models.CharField(max_length=255, blank=True, null=True)
+    genre = models.CharField(max_length=100, blank=True, null=True)
+    
     class Meta:
         managed = False
         db_table = 'watching_log'
