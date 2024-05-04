@@ -1,5 +1,11 @@
-from django.shortcuts import render
-import datetime
+from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404
+from django.conf import settings
+from django.http import JsonResponse
+from django.db import connection
+
+from .forms import MovieForm
+from .models import Contents
 
 # Create your views here.
 def main_page(request):
@@ -13,3 +19,24 @@ def main_page(request):
     
     # request에 대해 main.html로 context데이터를 넘겨준다.
     return render(request, 'main_page.html', context)
+
+
+def upload_movie(request):
+    if request.method == 'POST':
+        form = MovieForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('movie_list')
+    else:
+        form = MovieForm()
+    return render(request, 'upload_movie.html', {'form': form})
+
+def movie_list(request):
+    movies = Contents.objects.order_by('-popularity')[:8]
+
+    return render(request, 'movie_list.html', {'movies': movies})
+
+def movie_list2(request):
+    movies = Contents.objects.order_by('popularity')[:8]
+
+    return render(request, 'index.html', {'movies': movies})

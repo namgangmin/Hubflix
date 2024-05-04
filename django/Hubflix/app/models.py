@@ -83,7 +83,7 @@ class Contents(models.Model):
     vote_count = models.IntegerField(blank=True, null=True)
     adult = models.IntegerField(blank=True, null=True)
     vote_average = models.IntegerField(blank=True, null=True)
-    poster_path = models.TextField(blank=True, null=True)
+    poster_path = models.CharField(max_length=100, blank=True, null=True)
     rent = models.CharField(max_length=100, blank=True, null=True, db_comment='대여')
     buy = models.CharField(max_length=100, blank=True, null=True, db_comment='구매')
     flatrate = models.CharField(max_length=100, blank=True, null=True, db_comment='구독')

@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleguide.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    {% block css %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="screen">
+      <div class="frame-wrapper">
+        <div class="frame">
+          <div class="view">
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+          </div>
+          <img class="arrow" src="{%static 'img/arrow.png' %}" />
+          <div class="text-wrapper">회원님이 좋아할 만한 드라마</div>
+          <img class="vector" src="{%static 'img/vector.png' %}" />
+          <div class="div">
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+          </div>
+          <img class="img" src="{% static 'img/arrow-3.png' %}" />
+          <div class="text-wrapper-2">회원님이 좋아할 만한 영화</div>
+          <img class="vector-2" src="{%static 'img/vector-1.svg'%}" />
+          <div class="view-2">
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+          </div>
+          <img class="arrow-2" src="{%static 'img/arrow-3.png'%}" />
+          <div class="text-wrapper-3">지금 뜨는 콘텐츠</div>
+          <img class="vector-3" src="{%static 'img/vector-2.svg'%}" />
+          <div class="OTT">
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+          </div>
+          <img class="arrow-3" src="{%static 'img/arrow-3.png'%}" />
+          <div class="text-wrapper-4">OTT 통합랭킹</div>
+          <img class="vector-4" src="{%static 'img/vector-3.svg'%}" />
+          <div class="view-3">
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+            <div class="image"></div>
+          </div>
+          <img class="arrow-4" src="{%static 'img/arrow-4.png' %}" />
+          <div class="overlap">
+            <div class="text-wrapper-5">시청중인 컨텐츠</div>
+            <img class="vector-5" src="{%static 'img/vector-4.svg' %}" />
+          </div>
+          <div class="overlap-group">
+            <div class="ott">
+              <div class="ott-2">
+                <img class="ellipse" src="{%static 'img/ellipse-2.png' %}"" /> <img class="vector-6" src="{%static 'img/vector-5.png' %}" />
+              </div>
+              <img class="image-2" src="{%static 'img/image-3.png' %}" />
+              <img class="image-3" src="{%static 'img/image.png' %}" />
+              <img class="image-3" src="{%static 'img/image-2.png' %}" />
+              <img class="image-3" src="{%static 'img/image-5.png' %}" />
+              <img class="image-2" src="{%static 'img/image-4.png' %}" />
+            </div>
+          </div>
+          <div class="overlap-group-2">
+            <img class="image-4" src="{%static 'img/1.svg' %}" />
+            <div class="text-wrapper-6">search...</div>
+            <img class="image-5" src="{%static 'img/2.png' %}" />
+          </div>
+          <div class="overlap-2">
+            <img class="huflixm" src="{%static 'img/huflixm.png' %}" />
+            <div class="text-wrapper-7">HUBFLIX</div>
+          </div>
+          <img class="icon" src="{%static 'img/icon.png' %}" />
+          <img class="bell-icon" src="{%static 'img/bell-icon.png' %}" />
+          <img class="icon-2" src="{%static 'img/icon-2.png' %}" />
+          <div class="overlap-3">
+            <img class="login-button" src="{%static 'img/login-button.png' %}" />
+            <div class="text-wrapper-8">LOGIN</div>
+          </div>
+          <div class="navbar">
+            <div class="text-wrapper-9">시리즈</div>
+            <div class="text-wrapper-9">영화</div>
+            <div class="text-wrapper-9">드라마</div>
+            <div class="text-wrapper-10">커뮤니티</div>
+          </div>
+          <img class="button" src="{%static 'img/button.png' %}" />
+        </div>
+      </div>
+    </div>
+    {% block body %}
+    {% endblock %}
+  </body>
+</html>

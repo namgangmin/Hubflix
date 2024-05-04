@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie List</title>
+</head>
+<body>
+    <h2>Movie List</h2>
+    <ul>
+    {% for movie in movies %}
+        <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}">
+        <li>{{ movie.title }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
