@@ -37,6 +37,16 @@ def movie_list(request):
     return render(request, 'movie_list.html', {'movies': movies})
 
 def movie_list2(request):
-    movies = Contents.objects.order_by('popularity')[:8]
+    movies = Contents.objects.order_by('popularity')[:4]
 
     return render(request, 'index.html', {'movies': movies})
+
+def login(request):
+    movies = Contents.objects.order_by('popularity')[:4]
+
+    return render(request, 'login.html', {'movies': movies})
+
+def sign_up(request):
+    movies = Contents.objects.order_by('popularity')[:4]
+
+    return render(request, 'sign_up.html', {'movies': movies})

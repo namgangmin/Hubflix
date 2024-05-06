@@ -15,46 +15,66 @@
       <div class="frame-wrapper">
         <div class="frame">
           <div class="view">
+            {% for movie in movies %}
+            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}" class="image">
+            <!--<li>{{ movie.title }}</li>-->
+            {% endfor %}
+            <!--<div class="image"></div>
             <div class="image"></div>
             <div class="image"></div>
-            <div class="image"></div>
-            <div class="image"></div>
+            <div class="image"></div>-->
           </div>
           <img class="arrow" src="{%static 'img/arrow.png' %}" />
           <div class="text-wrapper">회원님이 좋아할 만한 드라마</div>
           <img class="vector" src="{%static 'img/vector.png' %}" />
           <div class="div">
+            {% for movie in movies %}
+            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}" class="image">
+            <!--<li>{{ movie.title }}</li>-->
+            {% endfor %}
+            <!--<div class="image"></div>
             <div class="image"></div>
             <div class="image"></div>
-            <div class="image"></div>
-            <div class="image"></div>
+            <div class="image"></div>-->
           </div>
           <img class="img" src="{% static 'img/arrow-3.png' %}" />
           <div class="text-wrapper-2">회원님이 좋아할 만한 영화</div>
           <img class="vector-2" src="{%static 'img/vector-1.svg'%}" />
           <div class="view-2">
+            {% for movie in movies %}
+            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}" class="image">
+            <!--<li>{{ movie.title }}</li>-->
+            {% endfor %}
+            <!--<div class="image"></div>
             <div class="image"></div>
             <div class="image"></div>
-            <div class="image"></div>
-            <div class="image"></div>
+            <div class="image"></div>-->
           </div>
           <img class="arrow-2" src="{%static 'img/arrow-3.png'%}" />
           <div class="text-wrapper-3">지금 뜨는 콘텐츠</div>
           <img class="vector-3" src="{%static 'img/vector-2.svg'%}" />
           <div class="OTT">
+            {% for movie in movies %}
+            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}" class="image">
+            <!--<li>{{ movie.title }}</li>-->
+            {% endfor %}
+            <!--<div class="image"></div>
             <div class="image"></div>
             <div class="image"></div>
-            <div class="image"></div>
-            <div class="image"></div>
+            <div class="image"></div>-->
           </div>
           <img class="arrow-3" src="{%static 'img/arrow-3.png'%}" />
           <div class="text-wrapper-4">OTT 통합랭킹</div>
           <img class="vector-4" src="{%static 'img/vector-3.svg'%}" />
           <div class="view-3">
+            {% for movie in movies %}
+            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}" class="image">
+            <!--<li>{{ movie.title }}</li>-->
+            {% endfor %}
+            <!--<div class="image"></div>
             <div class="image"></div>
             <div class="image"></div>
-            <div class="image"></div>
-            <div class="image"></div>
+            <div class="image"></div>-->
           </div>
           <img class="arrow-4" src="{%static 'img/arrow-4.png' %}" />
           <div class="overlap">
@@ -85,10 +105,12 @@
           <img class="icon" src="{%static 'img/icon.png' %}" />
           <img class="bell-icon" src="{%static 'img/bell-icon.png' %}" />
           <img class="icon-2" src="{%static 'img/icon-2.png' %}" />
-          <div class="overlap-3">
-            <img class="login-button" src="{%static 'img/login-button.png' %}" />
-            <div class="text-wrapper-8">LOGIN</div>
-          </div>
+          <div class="overlap-3">  
+            <a href = '/hubflix/login'>  
+              <img  class = "login-button" src="{%static 'img/login-button.png' %}">LOGIN />
+              <div class="text-wrapper-8">LOGIN</div>
+            </a>
+            </div>
           <div class="navbar">
             <div class="text-wrapper-9">시리즈</div>
             <div class="text-wrapper-9">영화</div>

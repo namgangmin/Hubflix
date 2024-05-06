@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/globals_login.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleguide.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style_login.css' %}" />
+    {% block css %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="screen">
+      <div class="frame-wrapper">
+        <div class="frame">
+          <div class="hubflix">
+            <img class="vector" src="{% static 'img/vector_login.svg'%}" />
+            <div class="text-wrapper">HUBFLIX</div>
+          </div>
+          <div class="div">
+            <div class="ID">
+              <input type="text" name="username" id="username" class="overlap-group" 
+              placeholder ="ID"  
+              style="font-family: 'Anaheim', Helvetica; color: #ffffff;
+              font-size: 24px; ">
+              <!--<div class="text-wrapper-2">ID</div>-->
+              </input>
+            </div>
+            <div class="PW">
+                <input type="password" name="username" id="username" class="div-wrapper" 
+                style="font-family: 'Anaheim', Helvetica; color: #ffffff;
+                font-size: 23px; ">
+              <!--<div class="div-wrapper"><div class="text-wrapper-3">PW</div></div>-->
+            </div>
+           <button type="button" class="button" 
+           style= "font-family: 'Anaheim', Helvetica; color: #ffffff;
+           font-size: 23px; text-align: center;"> LOGIN
+              <!--<div class="text-wrapper-4">LOGIN</div>-->
+            </button>
+            <div class="view">
+              <button class="button-2">
+                <img class="SVG" src="{% static 'img/svg_login.svg' %}" />
+                <div class="text-wrapper-5">카카오로 시작하기</div>
+              </button>
+            </div>
+            <div class="button-wrapper">
+              <button class="button-2">
+                <img class="SVG" src="{% static 'img/svg-1_login.svg' %}" />
+                <div class="text-wrapper-6">네이버로 시작하기</div>
+              </button>
+            </div>
+          </div>
+          <div class="view-2">
+            <div class="item-link"><div class="item-link-2">아이디/비밀번호찾기</div></div>
+            <div class="item-wrapper"><div class="item">|</div></div>
+            <a href = '/hubflix/sign_up'> 
+              <div class="item-link-wrapper"><div class="item-link-3">회원가입하기</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% block body %}
+    {% endblock %}
+  </body>
+</html>
