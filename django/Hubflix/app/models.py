@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser, AbstractBaseUser, UserManager
+from django.contrib.auth.models import BaseUserManager
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -193,15 +194,74 @@ class UserLinkInfo(models.Model):
         db_table_comment = 'Save user linkage information, 유저 연동 정보를 저장하는 테이블'
 
 
-class Users(models.Model):
+class UserManager(BaseUserManager):
+    def create_user(self, user_id, email, name, nickname, birth, password=None):
+
+        if not email:
+            raise ValueError("이메일을 입력해주세요")
+        if not nickname:
+            raise ValueError("닉네임을 입력해주세요")
+        if not name:
+            raise ValueError("이름을 입력해주세요")
+        user = self.model(
+            user_id = user_id,
+            email=self.normalize_email(email),
+            name=name,
+            nickname = nickname,
+            birth = birth,
+        )
+
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, nickname, name, password=None):
+        user = self.create_user(
+            email,
+            name=name,
+            password=password,
+        )
+
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+    
+class Users(AbstractBaseUser):
     user_id = models.CharField(primary_key=True, max_length=50, db_comment='아이디')
     password = models.CharField(max_length=100, db_comment='비밀번호')
-    name = models.CharField(max_length=20, db_comment='이름')
-    email = models.CharField(max_length=50, db_comment='이메일')
-    phone_number = models.CharField(max_length=50, db_comment='전화번호')
-    nickname = models.CharField(max_length=30, db_comment='별명')
+    username = models.CharField(max_length=20, db_comment='이름',null=False, blank=False)
+    email = models.EmailField(max_length=50, db_comment='이메일',null=False, blank=False, unique=True)
+    phone_number = models.CharField(verbose_name='email',max_length=50, db_comment='전화번호')
+    nickname = models.CharField(max_length=100, db_comment='별명',null=False, blank=False, unique=True)
     gender = models.IntegerField(db_comment='성별')
     birth = models.DateField(blank=True, null=True, db_comment='생년월일')
+    last_login = models.DateField(blank=True, null=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    date_joined = models.DateTimeField()
+    
+    
+    is_superuser =models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+
+    objects = UserManager()
+   
+    USERNAME_FIELD = 'nickname'
+    REQUIRED_FIELDS = ['email','username']
+
+    def __str__(self):
+        return self.nickname
+    
+    def has_perm(self,perm,obj=None):
+        return True
+    
+    def has_module_perms(self, app_label):
+        return True
+    
+    @property
+    def is_staff(self):
+        return self.is_admin
 
     class Meta:
         managed = False

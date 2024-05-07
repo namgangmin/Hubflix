@@ -18,39 +18,47 @@
             <img class="vector" src="{% static 'img/vector_login.svg'%}" />
             <div class="text-wrapper">HUBFLIX</div>
           </div>
+          {% block content %}
           <div class="div">
-            <div class="ID">
-              <input type="text" name="username" id="username" class="overlap-group" 
-              placeholder ="ID"  
-              style="font-family: 'Anaheim', Helvetica; color: #ffffff;
-              font-size: 24px; ">
-              <!--<div class="text-wrapper-2">ID</div>-->
-              </input>
-            </div>
-            <div class="PW">
-                <input type="password" name="username" id="username" class="div-wrapper" 
+            <form method="POST" action = "{% url 'login.html' %}" class="div">
+              {% csrf_token %}
+              <div class="ID">
+                <input type="text" name="username" id="username" class="overlap-group" 
+                placeholder ="ID"  
+                style="font-family: 'Anaheim', Helvetica; color: #ffffff;
+                font-size: 24px; ">
+                <!--<div class="text-wrapper-2">ID</div>-->
+                </input>
+              </div>
+              <div class="PW">
+                <input type="password" name="password" id="password" class="overlap-group" 
                 style="font-family: 'Anaheim', Helvetica; color: #ffffff;
                 font-size: 23px; ">
-              <!--<div class="div-wrapper"><div class="text-wrapper-3">PW</div></div>-->
-            </div>
-           <button type="button" class="button" 
-           style= "font-family: 'Anaheim', Helvetica; color: #ffffff;
-           font-size: 23px; text-align: center;"> LOGIN
-              <!--<div class="text-wrapper-4">LOGIN</div>-->
-            </button>
-            <div class="view">
-              <button class="button-2">
-                <img class="SVG" src="{% static 'img/svg_login.svg' %}" />
-                <div class="text-wrapper-5">카카오로 시작하기</div>
-              </button>
-            </div>
-            <div class="button-wrapper">
-              <button class="button-2">
-                <img class="SVG" src="{% static 'img/svg-1_login.svg' %}" />
-                <div class="text-wrapper-6">네이버로 시작하기</div>
-              </button>
-            </div>
+                <!--<div class="div-wrapper"><div class="text-wrapper-3">PW</div></div>-->
+              </div>
+              <input type="submit" class="button" value="LOGIN" 
+              style= "font-family: 'Anaheim', Helvetica; color: #ffffff;
+              font-size: 23px; text-align: center; cursor:pointer;"> 
+                <!--<div class="text-wrapper-4">LOGIN</div>-->
+              </input>
+              <div class="view">
+                <button class="button-2">
+                  <img class="SVG" src="{% static 'img/svg_login.svg' %}" />
+                  <div class="text-wrapper-5">카카오로 시작하기</div>
+                </button>
+              </div>
+              <div class="button-wrapper">
+                <button class="button-2">
+                   <img class="SVG" src="{% static 'img/svg-1_login.svg' %}" />
+                  <div class="text-wrapper-6">네이버로 시작하기</div>
+                </button>
+              </div>
+            </form>
+            {% if error %}
+            {{error}}
+            {% endif %}
           </div>
+          {% endblock %}
           <div class="view-2">
             <div class="item-link"><div class="item-link-2">아이디/비밀번호찾기</div></div>
             <div class="item-wrapper"><div class="item">|</div></div>
@@ -61,7 +69,5 @@
         </div>
       </div>
     </div>
-    {% block body %}
-    {% endblock %}
   </body>
 </html>

@@ -19,10 +19,10 @@ from django.urls import path
 from app import views
 
 urlpatterns = [
-    # path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls),
     path('upload', views.upload_movie, name='upload_movie.html'),
     path('list', views.movie_list, name='movie_list.html'),
     path('', views.movie_list2, name='index.html'),
     path('login',  views.login, name='login.html'),
-    path('sign_up',  views.sign_up, name='sign_up.html')
+    path('sign_up',  views.signup, name='sign_up.html')
 ]

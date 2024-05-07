@@ -15,7 +15,7 @@
       <div class="frame-wrapper">
         <div class="frame">
           <div class="view">
-            {% for movie in movies %}
+            {% for movie in movies5 %}
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}" class="image">
             <!--<li>{{ movie.title }}</li>-->
             {% endfor %}
@@ -28,7 +28,7 @@
           <div class="text-wrapper">회원님이 좋아할 만한 드라마</div>
           <img class="vector" src="{%static 'img/vector.png' %}" />
           <div class="div">
-            {% for movie in movies %}
+            {% for movie in movies4 %}
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}" class="image">
             <!--<li>{{ movie.title }}</li>-->
             {% endfor %}
@@ -41,7 +41,7 @@
           <div class="text-wrapper-2">회원님이 좋아할 만한 영화</div>
           <img class="vector-2" src="{%static 'img/vector-1.svg'%}" />
           <div class="view-2">
-            {% for movie in movies %}
+            {% for movie in movies3 %}
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}" class="image">
             <!--<li>{{ movie.title }}</li>-->
             {% endfor %}
@@ -54,7 +54,7 @@
           <div class="text-wrapper-3">지금 뜨는 콘텐츠</div>
           <img class="vector-3" src="{%static 'img/vector-2.svg'%}" />
           <div class="OTT">
-            {% for movie in movies %}
+            {% for movie in movies2 %}
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}" class="image">
             <!--<li>{{ movie.title }}</li>-->
             {% endfor %}
