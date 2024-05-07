@@ -92,3 +92,29 @@ def signup(request):
         else:
             return render(request,'sign_up.html')
     return render(request,'sign_up.html')
+
+def user_detail(request):
+    movies = Contents.objects.order_by('-popularity')[:8]
+
+    return render(request, 'user_detail.html', {'movies': movies})
+
+
+def chatbot(request):
+    movies = Contents.objects.order_by('-popularity')[:8]
+
+    return render(request, 'chatbot.html', {'movies': movies})
+
+def user_detail_comm(request):
+    movies = Contents.objects.order_by('-popularity')[:8]
+
+    return render(request, 'user_detail_comm.html', {'movies': movies})
+
+def user_detail_like(request):
+    movies = Contents.objects.order_by('-popularity')[:8]
+
+    return render(request, 'user_detail_like.html', {'movies': movies})
+
+def user_detail_watch(request):
+    movies = Contents.objects.order_by('-popularity')[:8]
+
+    return render(request, 'user_detail_watch.html', {'movies': movies})

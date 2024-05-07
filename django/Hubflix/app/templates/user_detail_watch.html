@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleguide.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style_udw.css' %}" />
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="div-wrapper">
+        <div class="div">
+            <div class="overlap">
+                <a href='/hubflix'>
+                    <img class="vector" src="{% static 'img/img_ud/vector.svg' %}" />
+                    <div class="text-wrapper">HUBFLIX</div>
+                </a>
+            </div> <!--<img class="icon" src="img/image.svg" />--> <img class="img"
+                src="{% static 'img/img_ud/icon-1.svg' %}" /> <!--<img
+                class="bell-icon" src="img/bell-icon.svg" /> <img class="icon-2" src="img/icon.svg" /> <button
+                class="login-button">
+                <div class="text-wrapper-2">LOGIN</div>
+            </button>-->
+            <div class="overlap-group">
+                <div class="text-wrapper-3">채은 님</div>
+            </div>
+            <div class="content-create-wrapper">
+                <div class="content-create"><img class="color" src="{% static 'img/img_ud/color-1.svg' %}" /></div>
+            </div>
+            <div class="overlap-group-2">
+                <div class="rectangle"></div>
+                <div class="rectangle-2"></div>
+                <div class="rectangle-3"></div>
+                <div class="rectangle-4"></div>
+                <a href='/hubflix/user_detail'>
+                    <div class="text-wrapper-4">MY OTT</div>
+                </a>
+                <a href='/hubflix/user_detail_comm'>
+                    <div class="text-wrapper-5">나의 커뮤니티</div>
+                </a>
+                <a href='/hubflix/user_detail_like'>
+                    <div class="text-wrapper-6">관심 목록</div>
+                </a>
+                <div class="text-wrapper-7">시청중인 콘텐츠</div>
+                <div class="rectangle-5"></div> <img class="image" src="{% static 'img/img_ud/image-4.png' %}" />
+                <div class="rectangle-6"></div>
+                <div class="text-wrapper-8">시청중인 콘텐츠</div> <img class="arrow" src="{% static 'img/arrow.png' %}" />
+                <div class="text-wrapper-9">외계+인 1부</div>
+                <div class="text-wrapper-10">No Way Up</div>
+                <div class="text-wrapper-11">인투 더 월드</div>
+                <div class="text-wrapper-12">로드 하우스</div> <!--<img class="image-2"
+                    src="{% static 'img/img_ud/image.png' %}" /> <img class="image-3"
+                    src="{% static 'img/img_ud/image-3.png' %}" /> <img class="image-4"
+                    src="{% static 'img/img_ud/image-2.png' %}" />-->
+                    <img class="image" src="https://image.tmdb.org/t/p/w200/ynyN9hdxL5vq7GnSX8Fdz3TfoTE.jpg" /> 
+                <img class="image-2" src="https://image.tmdb.org/t/p/w200/hu40Uxp9WtpL34jv3zyWLb5zEVY.jpg" /> 
+                <img class="image-3" src="https://image.tmdb.org/t/p/w200/2xE3NI6zElWhwN9WJ92fqbZKmzZ.jpg" /> 
+                <img class="image-4" src="https://image.tmdb.org/t/p/w200/bXi6IQiQDHD00JFio5ZSZOeRSBh.jpg" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleguide.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style_ud.css' %}" />
+    {% block css %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="my-ott">
+      <div class="div">
+        <div class="overlap">
+          <a href = '/hubflix'>
+          <img class="vector" src="{%static 'img/img_ud/vector.svg' %}" />
+          <div class="text-wrapper">HUBFLIX</div>
+        </a>
+        </div>
+        <div class="overlap-group">
+          <div class="overlap-2">
+            <div class="ellipse"></div>
+            <img class="union" src="{%static 'img/img_ud/union-1.svg' %}" />
+          </div>
+          <img class="image" src="{%static 'img/img_ud/image-4.png' %}" />
+          <div class="overlap-3">
+            <div class="ellipse"></div>
+            <img class="img" src="{%static 'img/img_ud/union-1.svg' %}" />
+          </div>
+          <img class="image-2" src="{%static 'img/img_ud/image-3.png' %}" />
+          <img class="image-3" src="{%static 'img/img_ud/image-2.png' %}" />
+          <div class="overlap-4">
+            <div class="rectangle"></div>
+            <div class="text-wrapper-2">회원님이 구독중인 서비스</div>
+          </div>
+          <div class="text-wrapper-3">넷플릭스</div>
+          <div class="text-wrapper-4">웨이브</div>
+          <div class="text-wrapper-5">왓챠</div>
+          <div class="text-wrapper-6">디즈니 플러스</div>
+          <div class="text-wrapper-7">쿠팡 플레이</div>
+          <div class="overlap-5">
+            <div class="rectangle-2"></div>
+            <div class="text-wrapper-8">구독하러가기</div>
+          </div>
+          <div class="div-wrapper"><div class="text-wrapper-9">구독하러가기</div></div>
+          <div class="overlap-6"><div class="text-wrapper-9">구독하러가기</div></div>
+          <div class="overlap-7"><div class="text-wrapper-9">구독하러가기</div></div>
+          <div class="overlap-8"><div class="text-wrapper-9">구독하러가기</div></div>
+        </div>
+        <!--<img class="icon" src="{%static 'img/img_ud/image.svg' %}" />-->
+        <img class="icon-2" src="{%static 'img/img_ud/icon-1.svg' %}" />
+        <!--<img class="bell-icon" src="{%static 'img/img_ud/bell-icon.svg' %}" />
+        <img class="icon-3" src="{%static 'img/img_ud/icon.svg' %}" />-->
+        <!--<button class="login-button"><div class="text-wrapper-10">LOGIN</div></button>-->
+        <div class="overlap-9"><div class="text-wrapper-11">채은 님</div></div>
+        <div class="content-create-wrapper">
+          <div class="content-create"><img class="color" src="{%static 'img/img_ud/color-1.svg' %}" /></div>
+        </div>
+        <div class="overlap-10"><div class="text-wrapper-12">MY OTT</div></div>
+        <div class="overlap-11">
+          <a href = '/hubflix/user_detail_comm'>
+          <div class="rectangle-3"></div>
+          <div class="text-wrapper-13">나의 커뮤니티</div>
+          </a>
+        </div>
+        <div class="overlap-12">
+          <div class="rectangle-3"></div>
+          <div class="rectangle-4"></div>
+          <a href = '/hubflix/user_detail_like'>
+          <div class="text-wrapper-14">관심 목록</div>
+          </a>
+          <a href = '/hubflix/user_detail_watch'>
+          <div class="text-wrapper-15">시청중인 콘텐츠</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

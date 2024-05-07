@@ -1,0 +1,330 @@
+.ai {
+    background-color: #25392b;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.ai .div {
+    background-color: var(--huflix-main-color);
+    width: 1920px;
+    height: 2318px;
+    position: relative;
+}
+
+.ai .hubflix {
+    display: flex;
+    width: 345px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px 1px;
+    position: absolute;
+    top: 44px;
+    left: 46px;
+}
+
+.ai .vector {
+    position: relative;
+    width: 85.95px;
+    height: 64.67px;
+    margin-left: -4.81px;
+}
+
+.ai .text-wrapper {
+    position: relative;
+    width: 269px;
+    height: 87px;
+    margin-top: -1px;
+    margin-left: -6.81px;
+    text-shadow: 0px 4px 4px #00000040;
+    font-family: "Cabin-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 60px;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 40px;
+}
+
+.ai .overlap-group {
+    position: absolute;
+    width: 1920px;
+    height: 187px;
+    top: 2131px;
+    left: 0;
+    background-color: #e2e9e5ab;
+}
+
+.ai .overlap {
+    position: absolute;
+    width: 1596px;
+    height: 144px;
+    top: 22px;
+    left: 84px;
+    background-color: #eeeeeeab;
+    border-radius: 30px;
+}
+
+.ai .text-wrapper-2 {
+    position: absolute;
+    width: 734px;
+    height: 97px;
+    top: 22px;
+    left: 28px;
+    font-family: "Dosis-Light", Helvetica;
+    font-weight: 300;
+    color: #6f6f6f6b;
+    font-size: 45px;
+    text-align: center;
+    letter-spacing: -1px;
+    line-height: 14px;
+}
+
+.ai .view {
+    position: absolute;
+    width: 148px;
+    height: 144px;
+    top: 22px;
+    left: 1707px;
+    background-color: #629c76;
+    border-radius: 30px;
+}
+
+.ai .text-wrapper-3 {
+    position: absolute;
+    width: 148px;
+    height: 96px;
+    top: 23px;
+    left: 0;
+    font-family: "Dosis-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 45px;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 18px;
+}
+
+.ai .icon {
+    height: 68px;
+    top: 56px;
+    left: 1766px;
+    position: absolute;
+    width: 68px;
+}
+
+.ai .img {
+    height: 76px;
+    top: 52px;
+    left: 1680px;
+    position: absolute;
+    width: 68px;
+}
+
+.ai .div-wrapper {
+    position: absolute;
+    width: 816px;
+    height: 134px;
+    top: 397px;
+    left: 1016px;
+    background-image: url(../img/img_chat/abcd.png);
+    background-size: 100% 100%;
+}
+
+.ai .p {
+    position: absolute;
+    width: 740px;
+    height: 80px;
+    top: 26px;
+    left: 10px;
+    font-family: "Dosis-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 37px;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 18px;
+}
+
+.ai .flexcontainer-wrapper {
+    position: absolute;
+    width: 816px;
+    height: 137px;
+    top: 605px;
+    left: 200px;
+    background-image: url(../img/img_chat/abc.png);
+    background-size: 100% 100%;
+}
+
+.ai .flexcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    position: relative;
+    width: 740px;
+    height: 80px;
+    top: 29px;
+    left: 65px;
+}
+
+.ai .text {
+    position: relative;
+    align-self: stretch;
+    font-family: "Dosis-Regular", Helvetica;
+    font-weight: 400;
+    color: transparent;
+    font-size: 37px;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 18px;
+}
+
+.ai .span {
+    color: #ffffff;
+    letter-spacing: 0.37px;
+}
+
+.ai .text-wrapper-4 {
+    color: #000000;
+    letter-spacing: 0.37px;
+}
+
+.ai .element-wrapper {
+    position: absolute;
+    width: 816px;
+    height: 137px;
+    top: 778px;
+    left: 200px;
+    background-image: url(../img/img_chat/abc.png);
+    background-size: 100% 100%;
+}
+
+.ai .element {
+    position: absolute;
+    width: 740px;
+    height: 118px;
+    top: 12px;
+    left: 65px;
+    font-family: "Dosis-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 37px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 40px;
+}
+
+.ai .vector-wrapper {
+    position: absolute;
+    width: 134px;
+    height: 134px;
+    top: 608px;
+    left: 46px;
+    background-color: #92ab9a;
+    border-radius: 67px;
+}
+
+.ai .vector-2 {
+    position: absolute;
+    width: 97px;
+    height: 71px;
+    top: 31px;
+    left: 18px;
+}
+
+.ai .overlap-2 {
+    position: absolute;
+    width: 748px;
+    height: 899px;
+    top: 983px;
+    left: 212px;
+    background-image: url(../img/img_chat/abced.png);
+    background-size: 100% 100%;
+}
+
+.ai .image {
+    position: absolute;
+    width: 524px;
+    height: 705px;
+    top: 31px;
+    left: 134px;
+    object-fit: cover;
+}
+
+.ai .overlap-3 {
+    position: absolute;
+    width: 373px;
+    height: 88px;
+    top: 770px;
+    left: 221px;
+    background-color: #2e6440;
+    border-radius: 20px;
+}
+
+.ai .vector-3 {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    top: 21px;
+    left: 51px;
+}
+
+.ai .text-wrapper-5 {
+    position: absolute;
+    width: 250px;
+    height: 74px;
+    top: 6px;
+    left: 83px;
+    font-family: "Dosis-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 37px;
+    text-align: center;
+    letter-spacing: -2px;
+    line-height: 40px;
+}
+
+.ai .overlap-4 {
+    position: absolute;
+    width: 1216px;
+    height: 166px;
+    top: 181px;
+    left: 346px;
+}
+
+.ai .rectangle {
+    position: absolute;
+    width: 1216px;
+    height: 142px;
+    top: 13px;
+    left: 0;
+    background-color: #ebebeb;
+    border-radius: 50px;
+    border: 10px solid;
+    border-color: #629c76;
+}
+
+.ai .HUFILX-AI {
+    position: absolute;
+    width: 946px;
+    height: 166px;
+    top: 0;
+    left: 165px;
+    font-family: "Dosis-Bold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 37px;
+    letter-spacing: 1px;
+    line-height: 60px;
+    white-space: nowrap;
+}
+
+.ai .vector-4 {
+    position: absolute;
+    width: 64px;
+    height: 83px;
+    top: 42px;
+    left: 67px;
+}

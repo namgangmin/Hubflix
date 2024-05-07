@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleguide_chat.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style_chat.css' %}" />
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="ai">
+        <div class="div">
+            <div class="hubflix"> 
+                <a href = '/hubflix'>
+                <img class="vector" src="{%static 'img/huflixm.png' %}" />
+                <div class="text-wrapper">HUBFLIX</div>
+                </a>
+            </div>
+            <div class="overlap-group">
+                <div class="overlap">
+                    <div class="text-wrapper-2">찾고싶은 영화,드라마가 무엇인가요?</div>
+                </div>
+                <div class="view">
+                    <div class="text-wrapper-3">전송</div>
+                </div>
+            </div> <!--<img class="icon" src="{% static 'img/icon-2.svg' %}" /> <img class="img" src="{% static 'img/icon.svg' %}" />-->
+            <div class="div-wrapper">
+                <p class="p">넷플릭스에서 로맨스 장르의 영화를 추천해줘.</p>
+            </div>
+            <div class="flexcontainer-wrapper">
+                <div class="flexcontainer">
+                    <p class="text"> <span class="span">네. 넷플릭스의 로맨스 장르의 <br /></span> </p>
+                    <p class="text"> <span class="span">영화를 추천해드리겠습니다</span> <span class="text-wrapper-4">.</span> </p>
+                </div>
+            </div>
+            <div class="element-wrapper">
+                <p class="element"> &lt;&lt;너의 이름은&gt;&gt; 2016년 공개된 시카이 마코토 감독의 일본 애니메이션 로맨스 판타지 영화이다 </p>
+            </div>
+            <div class="vector-wrapper"><img class="vector-2" src="{%static 'img/huflixm.png' %}" /></div>
+            <div class="overlap-2"> <img class="image" src="{% static 'img/img_chat/your.jpg' %}" />
+                <div class="overlap-3"> <img class="vector-3" src="{% static 'img/img_chat/abc.png' %}" />
+                    <div class="text-wrapper-5">바로 보러가기</div>
+                </div>
+            </div>
+            <div class="overlap-4">
+                <div class="rectangle"></div>
+                <p class="HUFILX-AI"> 무엇이든지 물어보세요!<br />HUFILX AI챗봇이&nbsp;&nbsp;보고싶은 영화,드라마를 추천해드립니다 </p> <img
+                    class="vector-4" src="{% static 'img/img_chat/bot.png' %}" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

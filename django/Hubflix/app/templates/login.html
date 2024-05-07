@@ -14,10 +14,12 @@
     <div class="screen">
       <div class="frame-wrapper">
         <div class="frame">
-          <div class="hubflix">
-            <img class="vector" src="{% static 'img/vector_login.svg'%}" />
-            <div class="text-wrapper">HUBFLIX</div>
-          </div>
+          <a href = '/hubflix'>
+            <div class="hubflix">
+              <img class="vector" src="{% static 'img/vector_login.svg'%}" />
+              <div class="text-wrapper">HUBFLIX</div>
+             </div>
+          </a>
           {% block content %}
           <div class="div">
             <form method="POST" action = "{% url 'login.html' %}" class="div">
