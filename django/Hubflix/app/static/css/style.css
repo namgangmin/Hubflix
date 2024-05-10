@@ -34,6 +34,7 @@
   height: 294px;
   background-color: #bee2ca2b;
   border-radius: 30px;
+  display: block;
 }
 
 .screen .arrow {
@@ -147,6 +148,20 @@
   left: 196px;
   position: absolute;
   width: 44px;
+}
+
+.text {
+  position: fixed;
+  width: 187px;
+  top: 0;
+  left: 0;
+  font-family: "Dosis-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 18px;
 }
 
 .screen .OTT {
@@ -464,4 +479,45 @@
   height: 23px;
   top: 73px;
   left: 84px;
+}
+
+.screen .button1 {
+  display: flex;
+  width: 1145px;
+  align-items: flex-start;
+  gap: 30px;
+  position: absolute;
+  top: 515px;
+  left: 147px;
+}
+
+.screen .div-wrapper {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  position: relative;
+  flex: 0 0 auto;
+  background-color: #d9d9d92b;
+  border-radius: 13px;
+  overflow: hidden;
+  border: 3px solid;
+  border-color: #ffffff;
+}
+
+.screen .text-wrapper-11 {
+  position: relative;
+  width: fit-content;
+  margin-top: -3px;
+  font-family: "Dosis-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  color: #ffffff;
+  line-height: 18px;
 }

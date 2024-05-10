@@ -20,6 +20,17 @@
           </div>
         </a>
           {% block content %}
+          {% if messages %}
+          <!--<div class="messages">-->
+          {% for message in messages %}
+          <script>
+            var message = "{{message}}";
+            window.alert(message)
+          </script>
+          <!--<div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</div>-->
+          {% endfor %}
+          <!--</div>-->
+          {% endif %}
           <div class="div">
             <form method = "POST" action= "">
               {% csrf_token %}            
@@ -117,7 +128,7 @@
               </div>
               <div class="view-8">
                 <div class="view-4">
-                  <input type="text" name="username" id="username" class="overlap-group-2" 
+                  <input type="text" name="user_id" id="user_id" class="overlap-group-2" 
                 placeholder ="ex&#41 abc123" tabindex="1"
                 style="font-family: 'Anaheim', Helvetica; color: #ffffff;
                 font-size: 24px; "></input>

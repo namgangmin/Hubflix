@@ -11,26 +11,27 @@ class ContentsSerializer(serializers.ModelSerializer):
 
 
 class UsersSerializer(serializers.ModelSerializer):
-    def create(self, validated_data):
-        user = Users.objects.create_user(
-            user_id = validated_data['user_id'],
-            email = validated_data['email'],
-            nickname = validated_data['nickname'],
-            username = validated_data['username'],
-            password = validated_data['password'],
-            birth = validated_data['birth']
-        )
-        return user
+    #def create(self, validated_data):
+    #    user = Users.objects.create_user(
+    #        user_id = validated_data['user_id'],
+    #        email = validated_data['email'],
+    #        nickname = validated_data['nickname'],
+    #        username = validated_data['username'],
+    #        password = validated_data['password'],
+    #        birth = validated_data['birth']
+    #    )
+    #    return user
     
     class Meta:
-        model = get_user_model()    # Users 모델 사용
-        fields = ['user_id', 'nickname', 'email', 'username', 'password', 'birth']          # 모든 필드 포함
+        model = Users    # Users 모델 사용
+        fields = '__all__'
+        #fields = ['user_id', 'nickname', 'email', 'username', 'password', 'birth']          # 모든 필드 포함
 
-class UserInfoSerializer(serializers.ModelSerializer):
+#class UserInfoSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = get_user_model()
-        fields = ('user_id','email','username')
+#    class Meta:
+#        model = get_user_model()
+#        fields = ('user_id','email','username')
 
 
 class PostSerializer(serializers.ModelSerializer):

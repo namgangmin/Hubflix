@@ -226,45 +226,45 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
     
-class Users(AbstractBaseUser):
+class Users(models.Model):
     user_id = models.CharField(primary_key=True, max_length=50, db_comment='아이디')
     password = models.CharField(max_length=100, db_comment='비밀번호')
-    username = models.CharField(max_length=20, db_comment='이름',null=False, blank=False)
-    email = models.EmailField(max_length=50, db_comment='이메일',null=False, blank=False, unique=True)
-    phone_number = models.CharField(verbose_name='email',max_length=50, db_comment='전화번호')
+    #username = models.CharField(max_length=20, db_comment='이름',null=False, blank=False)
+    email = models.EmailField(verbose_name='email',max_length=50, db_comment='이메일',null=False, blank=False, unique=True)
+    #phone_number = models.CharField(verbose_name='email',max_length=50, db_comment='전화번호')
     nickname = models.CharField(max_length=100, db_comment='별명',null=False, blank=False, unique=True)
-    gender = models.IntegerField(db_comment='성별')
+    #gender = models.IntegerField(db_comment='성별')
     birth = models.DateField(blank=True, null=True, db_comment='생년월일')
-    last_login = models.DateField(blank=True, null=True)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    date_joined = models.DateTimeField()
     
-    
-    is_superuser =models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
+    ###last_login = models.DateField(blank=True, null=True)
+    #first_name = models.CharField(max_length=100)
+    #last_name = models.CharField(max_length=100)
+    #date_joined = models.DateTimeField()
+        
+    #is_superuser =models.BooleanField(default=False)
+    #is_active = models.BooleanField(default=True)
+    # is_admin = models.BooleanField(default=False)
 
-    objects = UserManager()
+    #objects = UserManager()
    
     USERNAME_FIELD = 'nickname'
-    REQUIRED_FIELDS = ['email','username']
+    REQUIRED_FIELDS = ['email','nickname']
 
-    def __str__(self):
-        return self.nickname
+    #def __str__(self):
+    #    return self.nickname
     
-    def has_perm(self,perm,obj=None):
-        return True
+    #def has_perm(self,perm,obj=None):
+    #    return True
     
-    def has_module_perms(self, app_label):
-        return True
+    #def has_module_perms(self, app_label):
+    #    return True
     
-    @property
-    def is_staff(self):
-        return self.is_admin
+    #@property
+    #def is_staff(self):
+    #    return self.is_admin
 
     class Meta:
-        managed = False
+    #    managed = False
         db_table = 'users'
         db_table_comment = 'Stores collected users information, 수집한 유저의 정보를 저장하는 테이블'
 

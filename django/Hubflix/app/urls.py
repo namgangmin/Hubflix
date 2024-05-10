@@ -22,12 +22,15 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('upload', views.upload_movie, name='upload_movie.html'),
     path('list', views.movie_list, name='movie_list.html'),
+   
     path('', views.movie_list2, name='index.html'),
+    path('main',  views.main_yl, name='main_yl.html'),
     path('login',  views.login, name='login.html'),
     path('sign_up',  views.signup, name='sign_up.html'),
     path('user_detail',  views.user_detail, name='user_detail.html'),
     path('chatbot',  views.chatbot, name='chatbot.html'),
     path('user_detail_comm',  views.user_detail_comm, name='user_detail_comm.html'),
     path('user_detail_like',  views.user_detail_like, name='user_detail_like.html'),
-    path('user_detail_watch',  views.user_detail_watch, name='user_detail_watch.html')
+    path('user_detail_watch',  views.user_detail_watch, name='user_detail_watch.html'),
+    path('contents_detail',  views.contents_detail, name='contents_detail.html')
 ]
