@@ -74,9 +74,13 @@ def login(request):
             return render(request, 'login.html')
        
         me = Users.objects.get(user_id = userid)
-        
+        context = {}
         if me.password == password:
             request.session['user_id'] = me.user_id
+            request.session['nickname'] = me.nickname
+            context['user_id'] = request.session['user_id']
+            context['nickname'] = request.session['nickname']
+            #return render(request, 'main_yl.html',context)
             return redirect('/hubflix/main')
         else:
             messages.add_message(request, messages.ERROR, '비밀번호가 틀렸습니다')
@@ -125,6 +129,7 @@ def signup(request):
                 nickname = nickname,
                 email = email,
                 birth = birth)
+                
                 return redirect('./login') # 회원가입 완료
             #try:
             #    user = Users.objects.get(username=request.POST['username'])
@@ -150,13 +155,20 @@ def main_yl(request):
     movies4 = Contents.objects.filter(release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
     movies5 = Contents.objects.order_by('-release_date')[30:34]
 
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
+
     return render(request, 'main_yl.html', {'movies': movies, 'movies2' : movies2, 
-                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5})
+                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
+                                          'user' : context })
 
 def user_detail(request):
-    movies = Contents.objects.order_by('-popularity')[:8]
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
 
-    return render(request, 'user_detail.html', {'movies': movies})
+    return render(request, 'user_detail.html', {'user' : context})
 
 
 def chatbot(request):
@@ -165,21 +177,37 @@ def chatbot(request):
     return render(request, 'chatbot.html', {'movies': movies})
 
 def user_detail_comm(request):
-    movies = Contents.objects.order_by('-popularity')[:8]
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
 
-    return render(request, 'user_detail_comm.html', {'movies': movies})
+    return render(request, 'user_detail_comm.html', {'user' : context})
 
 def user_detail_like(request):
-    movies = Contents.objects.order_by('-popularity')[:8]
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
 
-    return render(request, 'user_detail_like.html', {'movies': movies})
+    return render(request, 'user_detail_like.html', {'user' : context})
 
 def user_detail_watch(request):
-    movies = Contents.objects.order_by('-popularity')[:8]
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
 
-    return render(request, 'user_detail_watch.html', {'movies': movies})
+    return render(request, 'user_detail_watch.html', {'user' : context})
 
 def contents_detail(request):
     movies = Contents.objects.order_by('-popularity')[:8]
 
     return render(request, 'contents_detail.html', {'movies': movies})
+
+def search(request):
+    movies = Contents.objects.order_by('-popularity')[:8]
+
+    return render(request, 'search.html', {'movies': movies})
+
+def search_result(request):
+    movies = Contents.objects.order_by('-popularity')[:4]
+
+    return render(request, 'search_result.html', {'movies': movies})

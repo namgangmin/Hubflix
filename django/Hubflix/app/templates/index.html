@@ -19,7 +19,9 @@
           {% for movie in movies5 %}
           <a href="/hubflix/contents_detail">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
-            <p class="text">{{movie.title}}</p>
+            <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
+            color: #ffffff;font-size: 20px;text-align: center;
+            overflow: hidden;text-overflow: ellipsis;">{{movie.title}}</p>
           </a>
           {% endfor %}
           <!--<div class="image"></div>
@@ -34,7 +36,9 @@
           {% for movie in movies4 %}
           <a href="/hubflix/contents_detail">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
-            <p class="text">{{movie.title}}</p>
+            <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
+            color: #ffffff;font-size: 20px;text-align: center;
+            overflow: hidden;text-overflow: ellipsis;">{{movie.title}}</p>
           </a>
           {% endfor %}
           <!--<div class="image"></div>
@@ -49,7 +53,9 @@
           {% for movie in movies3 %}
           <a href="/hubflix/contents_detail">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
-            <p class="text">{{movie.title}}</p>
+            <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
+            color: #ffffff;font-size: 20px;text-align: center;
+            overflow: hidden;text-overflow: ellipsis;">{{movie.title}}</p>
           </a>
           {% endfor %}
           <!--<div class="image"></div>
@@ -64,7 +70,9 @@
           {% for movie in movies2 %}
           <a href="/hubflix/contents_detail">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
-            <p class="text">{{movie.title}}</p>
+            <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
+            color: #ffffff;font-size: 20px;text-align: center;
+            overflow: hidden;text-overflow: ellipsis;">{{movie.title}}</p>
           </a>
           {% endfor %}
           <!--<div class="image"></div>
@@ -79,7 +87,9 @@
           {% for movie in movies %}
           <a href="/hubflix/contents_detail">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
-            <p class="text">{{movie.title}}</p>
+            <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
+            color: #ffffff;font-size: 20px;text-align: center;
+            overflow: hidden;text-overflow: ellipsis;">{{movie.title}}</p>
           </a>
           {% endfor %}
           <!--<div class="image"></div>
@@ -92,7 +102,7 @@
           <div class="text-wrapper-5">최신 컨텐츠</div>
           <img class="vector-5" src="{%static 'img/vector-4.svg' %}" />
         </div>
-        <div class="button1"> 
+        <!--<div class="button1"> 
           <button class="div-wrapper"><div class="text-wrapper-11">#로맨스</div></button> 
           <button class="div-wrapper"><div class="text-wrapper-11">#액션</div></button> 
           <button class="div-wrapper"><div class="text-wrapper-11">#코미디</div></button> 
@@ -101,7 +111,7 @@
           <button class="div-wrapper"><div class="text-wrapper-11">#판타지</div></button>
           <button class="div-wrapper"><div class="text-wrapper-11">#SF</div></button> 
           <button class="div-wrapper"><div class="text-wrapper-11">#공포</div></button>
-        </div>
+        </div>-->
         <div class="overlap-group">
           <div class="ott">
             <div class="ott-2">
@@ -115,10 +125,13 @@
             <img class="image-2" src="{%static 'img/image-4.png' %}" />
           </div>
         </div>
+        <a href ="../hubflix/search">
         <div class="overlap-group-2">
           <img class="image-4" src="{%static 'img/1.svg' %}" />
-          <div class="text-wrapper-6">search...</div>
+          
+          <!--<div class="text-wrapper-6">search...</div>-->
           <img class="image-5" src="{%static 'img/2.png' %}" />
+        </a>
         </div>
         <div class="overlap-2">
           <a href='/hubflix/'>
@@ -126,10 +139,10 @@
             <div class="text-wrapper-7">HUBFLIX</div>
           </a>
         </div>
-        <a href='/hubflix/user_detail'>
+        <!--<a href='/hubflix/user_detail'>
           <img class="icon" src="{%static 'img/icon.png' %}" />
         </a>
-        <img class="bell-icon" src="{%static 'img/bell-icon.png' %}" />
+        <img class="bell-icon" src="{%static 'img/bell-icon.png' %}" />-->
         <a href='/hubflix/chatbot'>
           <img class="icon-2" src="{%static 'img/icon-2.png' %}" />
         </a>

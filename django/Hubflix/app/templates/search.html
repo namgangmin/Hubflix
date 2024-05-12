@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleguide_chat.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style_search.css'%}" />
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="screen">
+        <div class="overlap-group-wrapper">
+            <div type class="overlap-group">
+                <div class="view"> <img class="image" src="{%static 'img/1.svg' %}" />
+                    <!--<div class="text-wrapper">search...</div>--> <img class="img" src="{%static 'img/2.png' %}" />
+                </div>
+                <div class="overlap">
+                    <a href = "/hubflix/search_result">
+                    <div class="div">검색</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

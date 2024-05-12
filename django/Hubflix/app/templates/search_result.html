@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleguide_chat.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style_sr.css' %}" />
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="screen">
+        <div class="div">
+            <div class="overlap-group">
+                <div class="view"> <img class="image" src="img/image.svg" />
+                    <div class="text-wrapper">쿵푸팬더</div> <img class="img" src="{%static 'img/2.png' %}"" />
+                </div>
+                <div class="overlap">
+                    <a href ="/hubflix/search_result">
+                    <div class="text-wrapper-2">검색</div>
+                </a>
+                </div>
+            </div> 
+            {% for movie in movies %}
+          <a href="/hubflix/contents_detail">
+            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="rectangle-2">
+            <p class = "text-wrapper-3">{{movie.title}}</p>
+            </a>
+            {% endfor %}
+            <!--<img class="rectangle" src="img/rectangle-7.png" /> <img class="rectangle-2"
+                src="img/rectangle-8.png" /> <img class="rectangle-3" src="img/rectangle-9.png" /> <img
+                class="rectangle-4" src="img/rectangle-10.png" />
+            <div class="text-wrapper-3">쿵푸팬더</div>
+            <div class="text-wrapper-4">쿵푸팬더2</div>
+            <div class="text-wrapper-5">쿵푸팬더3</div>
+            <div class="text-wrapper-6">쿵푸팬더4</div>-->
+        </div>
+    </div>
+    {% block body %}
+    {% endblock %}
+</body>
+
+</html> 

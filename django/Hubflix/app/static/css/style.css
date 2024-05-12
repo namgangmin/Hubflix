@@ -152,9 +152,7 @@
 
 .text {
   position: fixed;
-  width: 187px;
-  top: 0;
-  left: 0;
+
   font-family: "Dosis-Bold", Helvetica;
   font-weight: 700;
   color: #ffffff;
@@ -325,6 +323,7 @@
   left: 0;
 }
 
+
 .screen .text-wrapper-6 {
   position: absolute;
   width: 139px;
@@ -381,19 +380,27 @@
 }
 
 .screen .icon {
-  width: 40px;
+  width: 136px;
   top: 64px;
-  left: 1349px;
-  position: absolute;
-  height: 40px;
+  left: 1186px;
+  position: relative;
+  height: 61px;
+  margin-top: -1px;
+  font-family: "Dosis", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 18px;
 }
 
 .screen .bell-icon {
   position: absolute;
-  width: 39px;
-  height: 45px;
-  top: 64px;
-  left: 1273px;
+  width: 40px;
+  height: 40px;
+  top: 50px;
+  left: 1186px;
 }
 
 .screen .icon-2 {
