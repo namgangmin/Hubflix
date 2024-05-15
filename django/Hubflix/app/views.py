@@ -206,14 +206,20 @@ def contents_detail(request, contents_id):
     return render(request, 'contents_detail.html', {'movies': movies, 'contents_id' : contents_id})
 
 def search(request):
-    movies = Contents.objects.order_by('-popularity')[:8]
+    if request.method == "POST":
+        search_r = request.POST.get('want')
+        return redirect('../hubflix/search_result/'+search_r)
 
-    return render(request, 'search.html', {'movies': movies})
+    else:
+        return render(request, 'search.html',{'sear' : '쿵푸'})
 
 def search_result(request, title):
     movies = Contents.objects.all().filter(title__contains=title)[:4]
     movies2 = Contents.objects.all().filter(title__contains=title)[4:8]
     movies3 = Contents.objects.all().filter(title__contains=title)[8:12]
+    if request.method == "POST":
+        search_r = request.POST.get('want')
+        return redirect('../search_result/'+search_r)
 
     return render(request, 'search_result.html', {'movies': movies, 'movies2' : movies2, 'movies3' : movies3, 'title': title})
 

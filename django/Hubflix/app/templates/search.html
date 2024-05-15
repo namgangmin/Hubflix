@@ -12,21 +12,35 @@
 
 <body>
     <div class="screen">
-        <div class="overlap-group-wrapper">
+        <div class="overlap-group-wrapper">          
             <div class="overlap-group">
-                <div class="view"> <input class="image" style="position: relative;
+                {% block content %}
+                <form method= "POST" action= "">
+                    {% csrf_token %}
+                <div class="view"> 
+                    <input class="image" type= "text" name="want" id="want" style="position: relative;
                     width: 1100px; height: 89px; left: 90px; background-color: #56655a; border-radius:23px; color: #ffffff;
                     font-size: 30px;"  />
                     <!--<div class="text-wrapper">search...</div>--> <img class="img" src="{%static 'img/2.png' %}" />
                 </div>
+                
                 <div class="overlap">
-                    <a href = "/hubflix/search_result">
-                    <div class="div">검색</div>
-                    </a>
+                    <!--<a href = "/hubflix/search_result/{{sear}}">-->
+                    <input type="submit" style="position: absolute; width: 99px; height: 89px; top: 0px; left: 0px; border-radius: 10px; cursor:pointer;
+                    font-family: 'Dosis-Bold', Helvetica; font-weight: 700; background-color: #d4d4d4; font-size: 20px; text-align: center;
+                    letter-spacing: 0; line-height: 48px; white-space: nowrap;" value="검색">검색</div>
+                    <!--</a>-->
                 </div>
+                </form>
+                {% endblock %}
             </div>
+            
         </div>
+    
+    
     </div>
+    {% block body %}
+    {% endblock %}
 </body>
 
 </html>
