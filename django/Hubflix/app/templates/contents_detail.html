@@ -13,14 +13,24 @@
 <body>
     <div class="screen">
         <div class="div">
-            <div class="overlap">
+            <div class="hubflix" >
+                <div style="position: relative;  width: 214px;
+                height: 44px; top: 20px; left: 650px;">
+                    <div class="text-wrapper-10">HUBFLIX</div> <img class="vector" src="{%static 'img/huflixm.png' %}" />
+                </div>
+            </div> 
+            <a href="javascript:history.back();">
+                <img style="position: absolute; width: 270px;
+                height: 240px; top: 20px; left: -90px;" src="{% static 'img/back.png' %}" />
+            </a>
+            <div class="overlap" style="top: 800px;  height: 700px;">
                 <div class="view">
                     <div class="view-2">
                         <div class="div-wrapper">
                             <div class="text-wrapper">장르</div>
                         </div>
                         <div class="div-wrapper">
-                            <div class="text-wrapper">드라마</div>
+                            <div class="text-wrapper">{{movies.genre}}</div>
                         </div>
                     </div>
                     <div class="view-3">
@@ -28,23 +38,23 @@
                             <div class="text-wrapper">등장인물</div>
                         </div>
                         <div class="div-wrapper">
-                            <div class="text-wrapper">김수현,김지원,박성훈,곽동연,이주빈,김갑수</div>
+                            <div class="text-wrapper">{{movies.title}}</div>
                         </div>
                     </div>
                     <div class="view-4">
                         <div class="div-wrapper">
-                            <div class="text-wrapper">연령등급</div>
+                            <div class="text-wrapper">개봉일</div>
                         </div>
                         <div class="div-wrapper">
-                            <div class="text-wrapper">15세 이상 시청가</div>
+                            <div class="text-wrapper">{{movies.release_date}}</div>
                         </div>
                     </div>
                     <div class="view-5">
                         <div class="div-wrapper">
-                            <div class="text-wrapper">회차</div>
+                            <div class="text-wrapper">키워드</div>
                         </div>
                         <div class="div-wrapper">
-                            <div class="text-wrapper">16부작</div>
+                            <div class="text-wrapper">{{movies.title}}</div>
                         </div>
                     </div>
                 </div>
@@ -52,11 +62,10 @@
                     <div class="view-6"></div>
                 </div>
                 <div class="div-wrapper-2">
-                    <p class="p"> 세기의 결혼... 세기의 전쟁? 퀸즈 그룹 재벌 3세, 백화점의 여왕 ′홍해인′. 용두리 이장 아들, 슈퍼마켓 왕자 ′백현우′. 3년차 부부의 아찔한
-                        위기와 기적처럼 다시 시작되는 사랑 이야기 </p>
+                    <!--<p class="p"> {{movies.overview}} </p>-->
                 </div>
             </div>
-            <div class="overlap-group"> <img class="ott" src="{% static 'img/ott.png' %}" />
+            <div class="overlap-group" style="top: 200px; "> <!--<img class="ott" src="{% static 'img/ott.png' %}" />
                 <div class="overlap-wrapper">
                     <div class="overlap-2">
                         <div class="text-wrapper-2">찜하기</div> <img class="bookmark" src="{% static 'img/bookmark.png' %}" />
@@ -66,58 +75,55 @@
                     <div class="overlap-2">
                         <div class="text-wrapper-3">보는중</div> <img class="eye" src="{% static 'img/eye.png' %}" />
                     </div>
+                </div>-->
+                <div class="div-wrapper-3" style ="left: 400px; ">
+                    <p class="text-wrapper-4"> {{movies.overview}} </p>
                 </div>
-                <div class="div-wrapper-3">
-                    <p class="text-wrapper-4"> 세기의 결혼... 세기의 전쟁? 퀸즈 그룹 재벌 3세, 백화점의 여왕 ′홍해인′. 용두리 이장 아들, 슈퍼마켓 왕자 ′백현우′.
-                        3년차 부부의 아찔한 위기와 기적처럼 다시 시작되는 사랑 이야기 </p>
-                </div>
-                <div class="view-7">
+                <div class="view-7" style="top: 10px; left: 410px;">
                     <div class="view-8">
                         <div class="text-wrapper-5">2024</div>
                     </div>
                     <div class="view-8">
-                        <div class="text-wrapper-5">시리즈</div>
+                        <div class="text-wrapper-5">{{movies.type}}</div>
                     </div>
                     <div class="view-8">
-                        <div class="text-wrapper-5">드라마/로맨스</div>
+                        <div class="text-wrapper-5">{{movies.genre}}</div>
                     </div>
                     <div class="view-8">
                         <div class="text-wrapper-5">15세이상시청가</div>
                     </div>
                 </div>
-                <div class="view-9">
-                    <div class="text-wrapper-6">눈물의 여왕</div>
-                </div> <img class="image" src="{% static 'img/image.png' %}" />
+                <div class="view-9" style ="left: 400px;">
+                    <div class="text-wrapper-6" style="width: 1000px; white-space: nowrap; text-align: left;">{{movies.title}}</div>
+                </div> <img class="image" style="left: 130px;" src="https://image.tmdb.org/t/p/w200{{ movies.poster_path }}" />
             </div>
-            <div class="overlap-3"> <button class="button">
-                    <div class="overlap-group-2">
-                        <div class="rectangle"></div>
-                        <div class="text-wrapper-7">커뮤니티</div>
+            <div class="overlap-3" style="top: 740px; "> <button class="button">
+                    <div class="overlap-group-2" style="top: 60;">
+                        <div class="rectangle" style="top: 60;"></div>
+                        <div class="text-wrapper-7" style="top: 20px;">커뮤니티</div>
                     </div>
                 </button> <button class="button-2">
                     <div class="overlap-group-2">
                         <div class="rectangle"></div>
-                        <div class="text-wrapper-7">리뷰</div>
+                        <div class="text-wrapper-7" style="top: 20px;">리뷰</div>
                     </div>
                 </button> <button class="button-3">
-                    <div class="overlap-group-2">
+                    <div class="overlap-group-2" >
+                        <a href = "{{movies.contents_id}}/watching">
                         <div class="rectangle"></div>
-                        <div class="text-wrapper-7">보는 곳</div>
+                        <div class="text-wrapper-7" style="top: 20px;">보는 곳</div>
+                    </a>
                     </div>
                 </button> <button class="button-4">
-                    <div class="text-wrapper-8">작품정보</div>
+                    <div class="text-wrapper-8" style="top: 20px;">작품정보</div>
                 </button> 
             <!--</div> <img class="icon" src="img/icon.svg" /> <img class="bell-icon"
                 src="img/bell-icon.svg" /> <img class="img" src="img/image.svg" /> <button class="login-button">
                 <div class="text-wrapper-9">LOGIN</div>
             </button>-->
-            <div class="hubflix">
-                <div class="overlap-4">
-                    <div class="text-wrapper-10">HUBFLIX</div> <img class="vector" src="{%static 'img/huflixm.png' %}" />
-                </div>
-            </div> <img class="button-5" src="{% static 'img/button.png' %}" />
+            
         </div>
     </div>
 </body>
 
-</html> Open in Playground
+</html> 

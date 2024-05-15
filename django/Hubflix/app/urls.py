@@ -32,7 +32,9 @@ urlpatterns = [
     path('user_detail_comm',  views.user_detail_comm, name='user_detail_comm.html'),
     path('user_detail_like',  views.user_detail_like, name='user_detail_like.html'),
     path('user_detail_watch',  views.user_detail_watch, name='user_detail_watch.html'),
-    path('contents_detail',  views.contents_detail, name='contents_detail.html'),
+    path('contents_detail/<int:contents_id>',  views.contents_detail, name='contents_detail.html'),
     path('search',  views.search, name='search.html'),
-    path('search_result',  views.search_result, name='search_result.html')
+    path('search_result',  views.search_result, name='search_result.html'),
+    path('contents_detail/<int:contents_id>/watching',  views.contents_dw, name='contents_dw.html'),
+    path('tv',  views.tv, name='tv.html')
 ]

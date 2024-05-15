@@ -17,7 +17,7 @@
       <div class="frame">
         <div class="view">
           {% for movie in movies5 %}
-          <a href="/hubflix/contents_detail">
+          <a href="/hubflix/contents_detail/{{movie.contents_id}}">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
             <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
             color: #ffffff;font-size: 20px;text-align: center;
@@ -34,7 +34,7 @@
         <img class="vector" src="{%static 'img/vector.png' %}" />
         <div class="div">
           {% for movie in movies4 %}
-          <a href="/hubflix/contents_detail">
+          <a href="/hubflix/contents_detail/{{movie.contents_id}}">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
             <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
             color: #ffffff;font-size: 20px;text-align: center;
@@ -51,11 +51,11 @@
         <img class="vector-2" src="{%static 'img/vector-1.svg'%}" />
         <div class="view-2">
           {% for movie in movies3 %}
-          <a href="/hubflix/contents_detail">
+          <a href="/hubflix/contents_detail/{{movie.contents_id}}">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
             <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
-            color: #ffffff;font-size: 20px;text-align: center;
-            overflow: hidden;text-overflow: ellipsis;">{{movie.title}}</p>
+            color: #ffffff;font-size: 20px;text-align: center; 
+             overflow: hidden; text-overflow: ellipsis;">{{movie.title}}</p>
           </a>
           {% endfor %}
           <!--<div class="image"></div>
@@ -68,10 +68,10 @@
         <img class="vector-3" src="{%static 'img/vector-2.svg'%}" />
         <div class="OTT">
           {% for movie in movies2 %}
-          <a href="/hubflix/contents_detail">
+          <a href="/hubflix/contents_detail/{{movie.contents_id}}">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
             <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
-            color: #ffffff;font-size: 20px;text-align: center;
+            color: #ffffff;font-size: 20px; text-align: center;
             overflow: hidden;text-overflow: ellipsis;">{{movie.title}}</p>
           </a>
           {% endfor %}
@@ -85,7 +85,7 @@
         <img class="vector-4" src="{%static 'img/vector-3.svg'%}" />
         <div class="view-3">
           {% for movie in movies %}
-          <a href="/hubflix/contents_detail">
+          <a href="/hubflix/contents_detail/{{movie.contents_id}}">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
             <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
             color: #ffffff;font-size: 20px;text-align: center;
@@ -153,7 +153,9 @@
           </a>
         </div>
         <div class="navbar">
+          <a href='/hubflix/tv'>
           <div class="text-wrapper-9">시리즈</div>
+          </a>
           <div class="text-wrapper-9">영화</div>
           <div class="text-wrapper-9">드라마</div>
           <div class="text-wrapper-10">커뮤니티</div>

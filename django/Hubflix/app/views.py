@@ -15,9 +15,12 @@ from datetime import date, timedelta
 from django.contrib import messages
 import datetime
 import re
+from django.db.models import Q
+import pandas as pd
 
 from .forms import MovieForm
 from .models import Contents
+from .models import Ott
 
 # Create your views here.
 def main_page(request):
@@ -49,12 +52,12 @@ def movie_list(request):
     return render(request, 'movie_list.html', {'movies': movies})
 
 def movie_list2(request):
-    movies = Contents.objects.filter(release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
-    movies2 = Contents.objects.filter(vote_count__gte = 50,
+    movies = Contents.objects.filter(~Q(overview=""),release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
+    movies2 = Contents.objects.filter(~Q(overview=""),vote_count__gte = 50,
                                       release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
-    movies3 = Contents.objects.order_by('-vote_average')[3:7] # 지금 뜨는 컨텐츠
-    movies4 = Contents.objects.filter(release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
-    movies5 = Contents.objects.order_by('-release_date')[30:34]
+    movies3 = Contents.objects.filter(~Q(overview="")).order_by('-vote_average')[3:7] # 지금 뜨는 컨텐츠
+    movies4 = Contents.objects.filter(~Q(overview=""),release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
+    movies5 = Contents.objects.filter(~Q(overview="")).order_by('-release_date')[30:34]
 
     return render(request, 'index.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5})
@@ -148,12 +151,12 @@ def signup(request):
         return render(request,'sign_up.html')
 
 def main_yl(request):
-    movies = Contents.objects.filter(release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
-    movies2 = Contents.objects.filter(vote_count__gte = 50,
+    movies = Contents.objects.filter(~Q(overview=""),release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
+    movies2 = Contents.objects.filter(~Q(overview=""),vote_count__gte = 50,
                                       release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
-    movies3 = Contents.objects.order_by('-vote_average')[3:7] # 지금 뜨는 컨텐츠
-    movies4 = Contents.objects.filter(release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
-    movies5 = Contents.objects.order_by('-release_date')[30:34]
+    movies3 = Contents.objects.filter(~Q(overview="")).order_by('-vote_average')[3:7] # 지금 뜨는 컨텐츠
+    movies4 = Contents.objects.filter(~Q(overview=""),release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
+    movies5 = Contents.objects.filter(~Q(overview="")).order_by('-release_date')[30:34]
 
     context = {}
     context['user_id'] = request.session['user_id']
@@ -161,7 +164,7 @@ def main_yl(request):
 
     return render(request, 'main_yl.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
-                                          'user' : context })
+                                          'user' : context})
 
 def user_detail(request):
     context = {}
@@ -197,17 +200,55 @@ def user_detail_watch(request):
 
     return render(request, 'user_detail_watch.html', {'user' : context})
 
-def contents_detail(request):
-    movies = Contents.objects.order_by('-popularity')[:8]
+def contents_detail(request, contents_id):
+    movies = Contents.objects.get(contents_id = contents_id)
 
-    return render(request, 'contents_detail.html', {'movies': movies})
+    return render(request, 'contents_detail.html', {'movies': movies, 'contents_id' : contents_id})
 
 def search(request):
     movies = Contents.objects.order_by('-popularity')[:8]
 
     return render(request, 'search.html', {'movies': movies})
 
-def search_result(request):
-    movies = Contents.objects.order_by('-popularity')[:4]
+def search_result(request, title):
+    movies = Contents.objects.all().filter(title__contains=title)[:4]
+    movies2 = Contents.objects.all().filter(title__contains=title)[4:8]
+    movies3 = Contents.objects.all().filter(title__contains=title)[8:12]
 
-    return render(request, 'search_result.html', {'movies': movies})
+    return render(request, 'search_result.html', {'movies': movies, 'movies2' : movies2, 'movies3' : movies3, 'title': title})
+
+def contents_dw(request, contents_id):
+    movies = Contents.objects.get(contents_id=contents_id)
+    haveott = Contents.objects.filter(contents_id=contents_id).values('rent','buy','flatrate')
+    ott_df = pd.DataFrame(haveott)
+    
+    
+    ott_df['rent'] = ott_df['rent'].str.split(',')
+    ott_df['buy'] = ott_df['buy'].str.split(',')
+    ott_df['flatrate'] = ott_df['flatrate'].str.split(',')
+    print(type(ott_df['rent'][0]))
+
+    ott_df['rent'] = ott_df['rent'].explode(ignore_index = True)
+    print(ott_df['rent'])
+    #ott = {
+    #    'rent' : ott_df['rent'],
+    #    'buy' : ott_df['buy'],
+    #    'flatrate' : ott_df['flatrate']
+    #}
+    
+    #ott = Ott.objects.get(ott_name=ott_df)
+
+    return render(request, 'contents_dw.html', {'movies': movies, 'contents_id' : contents_id, 
+                                                'buys' : ott_df['buy'],'rents' : ott_df['rent'],
+                                                'flatrates' : ott_df['flatrate']})
+
+def tv(request):
+    movies = Contents.objects.filter(~Q(overview=""),type='tv',release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
+    movies2 = Contents.objects.filter(~Q(overview=""),type='tv',vote_count__gte = 50,
+                                      release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
+    movies3 = Contents.objects.filter(~Q(overview=""),type='tv').order_by('-vote_average')[3:7] # 지금 뜨는 컨텐츠
+    movies4 = Contents.objects.filter(~Q(overview=""),type='tv')[:4] 
+    movies5 = Contents.objects.filter(~Q(overview=""),type='tv').order_by('-release_date')[0:4]
+
+    return render(request, 'tv.html', {'movies': movies, 'movies2' : movies2, 
+                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5})

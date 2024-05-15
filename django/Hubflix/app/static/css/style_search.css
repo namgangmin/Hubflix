@@ -30,8 +30,12 @@
 
 .screen .image {
     position: relative;
-    width: 1211px;
+    width: 1100px;
     height: 89px;
+    left: 90px;
+    background-color: #56655a;
+    border-radius: 23px;
+    color: #ffffff;
 }
 
 .screen .text-wrapper {

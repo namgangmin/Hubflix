@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styleguide_chat.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style_dw.css' %}" />
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="screen">
+        <div class="div">
+            <div class="overlap" style ="top: 800px; height: 600px;">
+                {% for rent in rents %}
+                <div class="overlap-group"> <img class="ott" src="img/ott.png" />
+                    
+                    <div class="text-wrapper">{{rent}}</div>
+                    <!--<div class="text-wrapper-2">정액제</div> <img class="union" src="img/union.svg" />-->
+                    
+                </div>
+                {% endfor %}
+                <div class="text-wrapper-3">보러가기</div> <img class="youtube-shorts" src="{%static 'img/huflixm.png' %}" />
+            </div>
+            <div class="overlap-2" style="top: 740px;"> <button class="button">
+                    <div class="overlap-group-2" >
+                        <div class="rectangle"></div>
+                        <div class="text-wrapper-4" style="top: 20px;">커뮤니티</div>
+                    </div>
+                </button> <button class="overlap-wrapper">
+                    <div class="overlap-group-2">
+                        <div class="rectangle"></div>
+                        <div class="text-wrapper-4" style="top: 20px;">리뷰</div>
+                    </div>
+                </button> <button class="overlap-group-wrapper">
+                    <div class="overlap-group-2">
+                        <div class="rectangle-2"></div>
+                        <div class="text-wrapper-4" style="top: 20px;">보는 곳</div>
+                    </div>
+                </button> <a href = "/hubflix/contents_detail/{{movies.contents_id}}"><button class="div-wrapper">
+                    <div class="text-wrapper-5" style="top: 20px;">작품정보</div>
+                </button> </a></div>
+            <div class="overlap-3" style="top:200px"> <!--<img class="img" src="img/image.png" />
+                <div class="view">
+                    <div class="overlap-4">
+                        <div class="text-wrapper-6">찜하기</div> <img class="bookmark" src="img/bookmark.png" />
+                    </div>
+                </div>
+                <div class="view-2">
+                    <div class="overlap-4">
+                        <div class="text-wrapper-7">보는중</div> <img class="eye" src="img/eye.png" />
+                    </div>
+                </div>-->
+                <div class="rectangle-3"></div>
+                <div class="div-wrapper-2"  style ="left: 400px; ">
+                    <p class="p"> {{movies.overview}} </p>
+                </div>
+                <div class="view-3"  style ="top: 10px; left: 410px;">
+                    <div class="view-4">
+                        <div class="text-wrapper-8">2024</div>
+                    </div>
+                    <div class="view-4">
+                        <div class="text-wrapper-8">{{movies.type}}</div>
+                    </div>
+                    <div class="view-4">
+                        <div class="text-wrapper-8">{{movies.genre}}</div>
+                    </div>
+                    <div class="view-4">
+                        <div class="text-wrapper-8">15세이상시청가</div>
+                    </div>
+                </div>
+                <div class="view-5" style ="left: 400px;">
+                    <div class="text-wrapper-9" style="width: 1000px; white-space: nowrap; text-align: left;">{{movies.title}}</div>
+                </div> <img class="image" style="left: 130px;" src="https://image.tmdb.org/t/p/w200{{ movies.poster_path }}" />
+            </div> <!--<img class="icon" src="img/image.svg" /> <img class="bell-icon" src="img/bell-icon.svg" /> <img
+                class="icon-2" src="img/icon.svg" /> <button class="login-button">
+                <div class="text-wrapper-10">LOGIN</div>-->
+            </button>
+            <div class="hubflix">
+                <div style="position: relative;  width: 214px;
+                height: 44px; top: -45px; left: 500px;">
+                    <div class="text-wrapper-11" style="font-family: 'Dosis', Helvetica;">HUBFLIX</div> <img class="vector" src="{%static 'img/huflixm.png' %}" />
+                </div>
+            </div> 
+            <a href="javascript:history.back();">
+            <img style="position: absolute; width: 270px;
+            height: 240px; top: 20px; left: -90px;" src="{% static 'img/back.png' %}"/>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

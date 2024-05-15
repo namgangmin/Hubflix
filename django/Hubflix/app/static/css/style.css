@@ -37,6 +37,11 @@
   display: block;
 }
 
+.screen .image:hover{ /**/
+  transform: scale(1.2, 1.2); 
+  transition-duration: 0.5s;
+}
+
 .screen .arrow {
   top: 2606px;
   left: 1176px;
@@ -77,6 +82,9 @@
   gap: 69px;
   position: absolute;
 }
+
+.screen .div img:hover {transform: scale(1.2, 1.2); transition-duration: 0.5s;}
+.screen .div img {transition-duration: 0.3s;}
 
 .screen .img {
   top: 2193px;

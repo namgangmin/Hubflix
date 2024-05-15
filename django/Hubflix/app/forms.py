@@ -5,4 +5,5 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 class MovieForm(forms.ModelForm):
     class Meta: 
         model = Contents
-        fields = ['title', 'poster_path']
+        fields = '__all__'
+            #['title', 'poster_path','contents_id']
