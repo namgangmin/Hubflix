@@ -36,5 +36,10 @@ urlpatterns = [
     path('search',  views.search, name='search.html'),
     path('search_result/<title>',  views.search_result, name='search_result.html'),
     path('contents_detail/<int:contents_id>/watching',  views.contents_dw, name='contents_dw.html'),
-    path('tv',  views.tv, name='tv.html')
+    path('tv',  views.tv, name='tv.html'),
+    path('netflix',  views.netflix, name='netflix.html'),
+    path('wavve',  views.wavve, name='wavve.html'),
+    path('watcha',  views.watcha, name='watcha.html'),
+    path('disney',  views.disney, name='disney.html'),
+
 ]

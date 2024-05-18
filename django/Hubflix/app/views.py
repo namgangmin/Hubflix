@@ -315,3 +315,139 @@ def tv(request):
 
     return render(request, 'tv.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5, 'user' : context})
+
+def netflix(request):
+    movies = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Netflix')|Q(buy__contains='Netflix')|Q(flatrate__contains='Netflix'),
+                                     release_date__range=[date.today()-timedelta(days=3600), date.today()],).order_by('-release_date')[:4] # 최신 컨텐츠
+    movies2 = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Netflix')|Q(buy__contains='Netflix')|Q(flatrate__contains='Netflix'),vote_count__gte = 50,
+                                      release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
+    movies3 = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Netflix')|Q(buy__contains='Netflix')|Q(flatrate__contains='Netflix'),).order_by('-popularity')[:4] # 지금 뜨는 컨텐츠
+    movies4 = Contents.objects.filter(~Q(overview=""),release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
+    
+    exist = WatchingLog.objects.filter(user_id = request.session['user_id'])
+    
+    if exist:
+        stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
+        stitles = stitle[0]['contents_title']
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        print(similar_movies)
+    else :
+        stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
+        stitles = stitle[0]['title']
+        print(stitles)
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+    
+    movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
+    for i in range(1,5):
+        movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
+        movies5 = movies5 | movie
+    print(movies5)
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
+
+    return render(request, 'netflix.html', {'movies': movies, 'movies2' : movies2, 
+                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
+                                          'user' : context})
+
+def wavve(request):
+    movies = Contents.objects.filter(~Q(overview=""),Q(rent__contains='wavve')|Q(buy__contains='wavve')|Q(flatrate__contains='wavve'),
+                                     release_date__range=[date.today()-timedelta(days=3600), date.today()],).order_by('-release_date')[:4] # 최신 컨텐츠
+    movies2 = Contents.objects.filter(~Q(overview=""),Q(rent__contains='wavve')|Q(buy__contains='wavve')|Q(flatrate__contains='wavve'),vote_count__gte = 50,
+                                      release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
+    movies3 = Contents.objects.filter(~Q(overview=""),Q(rent__contains='wavve')|Q(buy__contains='wavve')|Q(flatrate__contains='wavve'),).order_by('-popularity')[:4] # 지금 뜨는 컨텐츠
+    movies4 = Contents.objects.filter(~Q(overview=""),release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
+    
+    exist = WatchingLog.objects.filter(user_id = request.session['user_id'])
+    
+    if exist:
+        stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
+        stitles = stitle[0]['contents_title']
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        print(similar_movies)
+    else :
+        stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
+        stitles = stitle[0]['title']
+        print(stitles)
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+    
+    movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
+    for i in range(1,5):
+        movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
+        movies5 = movies5 | movie
+    print(movies5)
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
+
+    return render(request, 'wavve.html', {'movies': movies, 'movies2' : movies2, 
+                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
+                                          'user' : context})
+
+def watcha(request):
+    movies = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Watcha')|Q(buy__contains='Watcha')|Q(flatrate__contains='Watcha'),
+                                     release_date__range=[date.today()-timedelta(days=3600), date.today()],).order_by('-release_date')[:4] # 최신 컨텐츠
+    movies2 = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Watcha')|Q(buy__contains='Watcha')|Q(flatrate__contains='Watcha'),vote_count__gte = 50,
+                                      release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
+    movies3 = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Watcha')|Q(buy__contains='Watcha')|Q(flatrate__contains='Watcha'),).order_by('-popularity')[:4] # 지금 뜨는 컨텐츠
+    movies4 = Contents.objects.filter(~Q(overview=""),release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
+    
+    exist = WatchingLog.objects.filter(user_id = request.session['user_id'])
+    
+    if exist:
+        stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
+        stitles = stitle[0]['contents_title']
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        print(similar_movies)
+    else :
+        stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
+        stitles = stitle[0]['title']
+        print(stitles)
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+    
+    movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
+    for i in range(1,5):
+        movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
+        movies5 = movies5 | movie
+    print(movies5)
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
+
+    return render(request, 'watcha.html', {'movies': movies, 'movies2' : movies2, 
+                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
+                                          'user' : context})
+
+def disney(request):
+    movies = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Disney')|Q(buy__contains='Disney')|Q(flatrate__contains='Disney'),
+                                     release_date__range=[date.today()-timedelta(days=3600), date.today()],).order_by('-release_date')[:4] # 최신 컨텐츠
+    movies2 = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Disney')|Q(buy__contains='Disney')|Q(flatrate__contains='Disney'),vote_count__gte = 50,
+                                      release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
+    movies3 = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Disney')|Q(buy__contains='Disney')|Q(flatrate__contains='Disney'),).order_by('-popularity')[:4] # 지금 뜨는 컨텐츠
+    movies4 = Contents.objects.filter(~Q(overview=""),release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
+    
+    exist = WatchingLog.objects.filter(user_id = request.session['user_id'])
+    
+    if exist:
+        stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
+        stitles = stitle[0]['contents_title']
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        print(similar_movies)
+    else :
+        stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
+        stitles = stitle[0]['title']
+        print(stitles)
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+    
+    movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
+    for i in range(1,5):
+        movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
+        movies5 = movies5 | movie
+    print(movies5)
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
+
+    return render(request, 'disney.html', {'movies': movies, 'movies2' : movies2, 
+                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
+                                          'user' : context})
