@@ -14,10 +14,12 @@
     <div class="screen">
         <div class="div">
             <div class="hubflix" >
+                <a href = '/hubflix/main'>
                 <div style="position: relative;  width: 214px;
                 height: 44px; top: 20px; left: 650px;">
                     <div class="text-wrapper-10">HUBFLIX</div> <img class="vector" src="{%static 'img/huflixm.png' %}" />
                 </div>
+                </a>
             </div> 
             <a href="javascript:history.back();">
                 <img style="position: absolute; width: 270px;
@@ -35,10 +37,10 @@
                     </div>
                     <div class="view-3">
                         <div class="div-wrapper">
-                            <div class="text-wrapper">등장인물</div>
+                            <div class="text-wrapper">러닝타임</div>
                         </div>
                         <div class="div-wrapper">
-                            <div class="text-wrapper">{{movies.title}}</div>
+                            <div class="text-wrapper">{{movies.runtime}}분</div>
                         </div>
                     </div>
                     <div class="view-4">
@@ -51,10 +53,10 @@
                     </div>
                     <div class="view-5">
                         <div class="div-wrapper">
-                            <div class="text-wrapper">키워드</div>
+                            <div class="text-wrapper">평점</div>
                         </div>
                         <div class="div-wrapper">
-                            <div class="text-wrapper">{{movies.title}}</div>
+                            <div class="text-wrapper">{{movies.vote_average}}</div>
                         </div>
                     </div>
                 </div>

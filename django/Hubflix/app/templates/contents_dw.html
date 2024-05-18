@@ -15,12 +15,38 @@
         <div class="div">
             <div class="overlap" style ="top: 800px; height: 600px;">
                 {% for rent in rents %}
-                <div class="overlap-group"> <img class="ott" src="img/ott.png" />
-                    
+                <a href ="{{rent.ott_link}}" target='_blank'>
+                <div id = "rentss" style="display: flex; width: 960px; align-items: flex-start; gap: 69px;
+                position: absolute; top: 70px; left: 20px;"> <img class="ott" src="https://image.tmdb.org/t/p/w200{{ rent.ott_icon }}" />
+                <script>window.onload=function(){
+                    var content = document.getElementById('rentss');
+                    content.style.top += str(5)+'px'; 
+                    content.style.left = '60px';
+                }</script>
+                <div class="text-wrapper">{{rent.ott_name}}</div>
+                <div class="text-wrapper-2">대여</div> <!--<img class="union" src="img/union.svg" />
                     <div class="text-wrapper">{{rent}}</div>
-                    <!--<div class="text-wrapper-2">정액제</div> <img class="union" src="img/union.svg" />-->
-                    
+                    <div class="text-wrapper-2">대여</div> <img class="union" src="img/union.svg" />-->
                 </div>
+                </a>
+                {% endfor %}
+                {% for buy in buys %}
+                <a href = "{{buy.ott_link}}" target='_blank'>
+                <div style="display: flex; width: 960px; align-items: flex-start; gap: 69px;
+                position: absolute; top: 120px; left: 20px;"> <img class="ott" src="https://image.tmdb.org/t/p/w200{{ buy.ott_icon }}" />
+                    <div class="text-wrapper">{{buy.ott_name}}</div>
+                    <div class="text-wrapper-2">구매</div> <!--<img class="union" src="img/union.svg" />-->
+                </div>
+                </a>
+                {% endfor %}
+                {% for flatrate in flatrates %}
+                <a href = "{{flatrate.ott_link}}" target='_blank'>
+                <div style="display: flex; width: 960px; align-items: flex-start; gap: 69px;
+                position: absolute; top: 170px; left: 20px;"> <img class="ott" src="https://image.tmdb.org/t/p/w300{{ flatrate.ott_icon }}" />
+                    <div class="text-wrapper">{{flatrate.ott_name}}</div>
+                    <div class="text-wrapper-2">구독</div> <!--<img class="union" src="img/union.svg" />-->
+                </div>
+                </a>
                 {% endfor %}
                 <div class="text-wrapper-3">보러가기</div> <img class="youtube-shorts" src="{%static 'img/huflixm.png' %}" />
             </div>
@@ -59,7 +85,7 @@
                 </div>
                 <div class="view-3"  style ="top: 10px; left: 410px;">
                     <div class="view-4">
-                        <div class="text-wrapper-8">2024</div>
+                        <div class="text-wrapper-8">{{movies.release_date}}</div>
                     </div>
                     <div class="view-4">
                         <div class="text-wrapper-8">{{movies.type}}</div>
@@ -79,10 +105,12 @@
                 <div class="text-wrapper-10">LOGIN</div>-->
             </button>
             <div class="hubflix">
+                <a href = '/hubflix/main'>
                 <div style="position: relative;  width: 214px;
                 height: 44px; top: -45px; left: 500px;">
                     <div class="text-wrapper-11" style="font-family: 'Dosis', Helvetica;">HUBFLIX</div> <img class="vector" src="{%static 'img/huflixm.png' %}" />
                 </div>
+            </a>
             </div> 
             <a href="javascript:history.back();">
             <img style="position: absolute; width: 270px;

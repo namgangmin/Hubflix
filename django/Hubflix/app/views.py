@@ -17,10 +17,16 @@ import datetime
 import re
 from django.db.models import Q
 import pandas as pd
+import numpy as np
 
 from .forms import MovieForm
 from .models import Contents
 from .models import Ott
+from .models import WatchingLog
+
+from datetime import datetime
+
+from .recommend import find_sim_movie
 
 # Create your views here.
 def main_page(request):
@@ -154,10 +160,27 @@ def main_yl(request):
     movies = Contents.objects.filter(~Q(overview=""),release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
     movies2 = Contents.objects.filter(~Q(overview=""),vote_count__gte = 50,
                                       release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
-    movies3 = Contents.objects.filter(~Q(overview="")).order_by('-vote_average')[3:7] # 지금 뜨는 컨텐츠
+    movies3 = Contents.objects.filter(~Q(overview="")).order_by('-popularity')[:4] # 지금 뜨는 컨텐츠
     movies4 = Contents.objects.filter(~Q(overview=""),release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
-    movies5 = Contents.objects.filter(~Q(overview="")).order_by('-release_date')[30:34]
-
+    
+    exist = WatchingLog.objects.filter(user_id = request.session['user_id'])
+    
+    if exist:
+        stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
+        stitles = stitle[0]['contents_title']
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        print(similar_movies)
+    else :
+        stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
+        stitles = stitle[0]['title']
+        print(stitles)
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+    
+    movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
+    for i in range(1,5):
+        movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
+        movies5 = movies5 | movie
+    print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
@@ -203,11 +226,25 @@ def user_detail_watch(request):
 def contents_detail(request, contents_id):
     movies = Contents.objects.get(contents_id = contents_id)
 
+    user_ids = request.session['user_id']
+    user = Users.objects.get(user_id = user_ids).user_id
+    print(user)
+    content_title = movies.title
+    contents_id = contents_id
+    WatchingLog.objects.create(
+        user_id = user,
+        contents_title = content_title,
+        contents_id = contents_id,
+        time = datetime.now()
+    #    id = user
+    )
+
     return render(request, 'contents_detail.html', {'movies': movies, 'contents_id' : contents_id})
 
 def search(request):
     if request.method == "POST":
         search_r = request.POST.get('want')
+
         return redirect('../hubflix/search_result/'+search_r)
 
     else:
@@ -227,15 +264,31 @@ def contents_dw(request, contents_id):
     movies = Contents.objects.get(contents_id=contents_id)
     haveott = Contents.objects.filter(contents_id=contents_id).values('rent','buy','flatrate')
     ott_df = pd.DataFrame(haveott)
+
     
     
     ott_df['rent'] = ott_df['rent'].str.split(',')
     ott_df['buy'] = ott_df['buy'].str.split(',')
     ott_df['flatrate'] = ott_df['flatrate'].str.split(',')
-    print(type(ott_df['rent'][0]))
+    
+    rentlen = len(ott_df['rent'][0])
+    buylen = len(ott_df['buy'][0])
+    flatratelen = len(ott_df['flatrate'][0])
 
-    ott_df['rent'] = ott_df['rent'].explode(ignore_index = True)
-    print(ott_df['rent'])
+    def ott (a, b):
+        c = []
+        for i in range(a):
+            o = Ott.objects.filter(ott_name__contains=b.str[i][0])
+            if o :
+                c.append(Ott.objects.get(ott_name__contains=b.str[i][0]))
+        return c
+
+    rents = ott(rentlen, ott_df['rent'])
+    buys = ott(buylen, ott_df['buy'])
+    flatrates = ott(flatratelen, ott_df['flatrate'])
+    print(rents)
+    
+
     #ott = {
     #    'rent' : ott_df['rent'],
     #    'buy' : ott_df['buy'],
@@ -245,8 +298,8 @@ def contents_dw(request, contents_id):
     #ott = Ott.objects.get(ott_name=ott_df)
 
     return render(request, 'contents_dw.html', {'movies': movies, 'contents_id' : contents_id, 
-                                                'buys' : ott_df['buy'],'rents' : ott_df['rent'],
-                                                'flatrates' : ott_df['flatrate']})
+                                                'buys' : buys,'rents' : rents,
+                                                'flatrates' : flatrates})
 
 def tv(request):
     movies = Contents.objects.filter(~Q(overview=""),type='tv',release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
@@ -256,5 +309,9 @@ def tv(request):
     movies4 = Contents.objects.filter(~Q(overview=""),type='tv')[:4] 
     movies5 = Contents.objects.filter(~Q(overview=""),type='tv').order_by('-release_date')[0:4]
 
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
+
     return render(request, 'tv.html', {'movies': movies, 'movies2' : movies2, 
-                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5})
+                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5, 'user' : context})

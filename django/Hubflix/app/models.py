@@ -146,6 +146,7 @@ class Ott(models.Model):
     ott_name = models.CharField(primary_key=True, max_length=100, db_comment='OTT 이름')
     ott_icon = models.TextField(blank=True, null=True, db_comment='OTT 아이콘(이미지)')
     ott_id = models.IntegerField(blank=True, null=True)
+    ott_link = models.CharField(max_length=500)
 
     class Meta:
         managed = False
@@ -270,12 +271,12 @@ class Users(models.Model):
 
 
 class WatchingLog(models.Model):
-    watch_num = models.IntegerField()
-    contents = models.ForeignKey(Contents, models.DO_NOTHING, blank=True, null=True)
-    user_link_num = models.ForeignKey(UserLinkInfo, models.DO_NOTHING, db_column='user_link_num', blank=True, null=True)
-    contents_title = models.CharField(max_length=255, blank=True, null=True)
-    genre = models.CharField(max_length=100, blank=True, null=True)
-    
+    contents_title = models.CharField(max_length=255, db_comment='컨텐츠의 제목')
+    user_id = models.CharField(max_length=50, db_comment='아이디')
+    contents_id = models.IntegerField(db_comment='컨텐츠의 고유 ID')
+    #id = models.CharField(max_length=50, blank=True, null=True)
+    time = models.DateTimeField(blank=True, null=True)
+
     class Meta:
         managed = False
         db_table = 'watching_log'
