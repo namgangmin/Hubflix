@@ -160,7 +160,8 @@ def main_yl(request):
     movies = Contents.objects.filter(~Q(overview=""),release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
     movies2 = Contents.objects.filter(~Q(overview=""),vote_count__gte = 50,
                                       release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
-    movies3 = Contents.objects.filter(~Q(overview="")).order_by('-popularity')[:4] # 지금 뜨는 컨텐츠
+    movies3 = Contents.objects.filter(~Q(overview=""),vote_count__gte = 50,
+                                      release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:4] # 지금 뜨는 컨텐츠
     movies4 = Contents.objects.filter(~Q(overview=""),release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
     
     exist = WatchingLog.objects.filter(user_id = request.session['user_id'])
@@ -168,18 +169,20 @@ def main_yl(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,5):
+    for i in range(1,4):
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
+        if movies5.count() == 4:
+            exit
     print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
@@ -329,18 +332,20 @@ def netflix(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,5):
+    for i in range(1,4):
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
+        if movies5.count() == 4:
+            exit
     print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
@@ -363,18 +368,20 @@ def wavve(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,5):
+    for i in range(1,4):
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
+        if movies5.count() == 4:
+            exit
     print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
@@ -397,18 +404,20 @@ def watcha(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,5):
+    for i in range(1,4):
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
+        if movies5.count() == 4:
+            exit
     print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
@@ -431,18 +440,20 @@ def disney(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        similar_movies = list(find_sim_movie(stitles,5)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,5):
+    for i in range(1,4):
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
+        if movies5.count() == 4:
+            exit
     print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
