@@ -19,59 +19,70 @@
         </a>
         </div>
         <div class="overlap-group">
-          <div class="overlap-2">
-            <div class="ellipse"></div>
-            <img class="union" src="{%static 'img/img_ud/union-1.svg' %}" />
-          </div>
-          <img class="image" src="{%static 'img/img_ud/image-4.png' %}" />
-          <div class="overlap-3">
-            <div class="ellipse"></div>
-            <img class="img" src="{%static 'img/img_ud/union-1.svg' %}" />
-          </div>
-          <img class="image-2" src="{%static 'img/img_ud/image-3.png' %}" />
-          <img class="image-3" src="{%static 'img/img_ud/image-2.png' %}" />
+          <!--<div class="overlap-2">
+            <div class="ellipse"></div>-->
+            <img class="union" id ="cott" style = "position: absolute;
+            width: 140px; height: 140px; top: 132px; left: 168px; object-fit: cover; cursor: pointer;" src="{% static 'img/img_ud/image.png' %}" />
+          <!--</div>-->
+          <img class="image" id ="cott" style = "cursor: pointer;" src="{%static 'img/img_ud/image-4.png' %}" />
+          <!--<div class="overlap-3">
+            <div class="ellipse"></div>-->
+            <img class="img" id ="cott" style = "position: absolute; cursor: pointer;
+            width: 140px; height: 140px; top: 132px; left: 660px; object-fit: cover;" src="{% static 'img/img_ud/image-5.png' %}" />
+          <!--</div>-->
+          <img class="image-2" id ="cott" style ="cursor: pointer;" src="{%static 'img/img_ud/image-3.png' %}" />
+          <img class="image-3" id ="cott" style = "background-size: cover; cursor: pointer;" src="https://image.tmdb.org/t/p/w300{{ ott.Naver_Store.ott_icon }}" /> 
+
           <div class="overlap-4">
             <div class="rectangle"></div>
-            <div class="text-wrapper-2">회원님이 구독중인 서비스</div>
+            <div class="text-wrapper-2">OTT 서비스</div>
           </div>
           <div class="text-wrapper-3">넷플릭스</div>
           <div class="text-wrapper-4">웨이브</div>
           <div class="text-wrapper-5">왓챠</div>
           <div class="text-wrapper-6">디즈니 플러스</div>
-          <div class="text-wrapper-7">쿠팡 플레이</div>
+          <div class="text-wrapper-7">네이버 스토어</div>
           <div class="overlap-5">
             <div class="rectangle-2"></div>
-            <div class="text-wrapper-8">구독하러가기</div>
+            <a href = "{{ott.Naver_Store.ott_link}}" target='_blank'>
+            <div class="text-wrapper-8">구독하러가기</div> </a>
           </div>
-          <div class="div-wrapper"><div class="text-wrapper-9">구독하러가기</div></div>
-          <div class="overlap-6"><div class="text-wrapper-9">구독하러가기</div></div>
-          <div class="overlap-7"><div class="text-wrapper-9">구독하러가기</div></div>
-          <div class="overlap-8"><div class="text-wrapper-9">구독하러가기</div></div>
+          <a href = "{{ott.Disney.ott_link}}" target='_blank'>
+          <div class="div-wrapper"><div class="text-wrapper-9">구독하러가기</div></div></a>
+          <a href = "{{ott.Watcha.ott_link}}" target='_blank'>
+          <div class="overlap-6"><div class="text-wrapper-9">구독하러가기</div></div></a>
+          <a href = "{{ott.Wavve.ott_link}}" target='_blank'>
+          <div class="overlap-7"><div class="text-wrapper-9">구독하러가기</div></div></a>
+          <a href = "{{ott.Netflix.ott_link}}" target='_blank'>
+          <div class="overlap-8"><div class="text-wrapper-9">구독하러가기</div></div></a>
         </div>
         <!--<img class="icon" src="{%static 'img/img_ud/image.svg' %}" />-->
         <img class="icon-2" src="{%static 'img/img_ud/icon-1.svg' %}" />
         <!--<img class="bell-icon" src="{%static 'img/img_ud/bell-icon.svg' %}" />
         <img class="icon-3" src="{%static 'img/img_ud/icon.svg' %}" />-->
         <!--<button class="login-button"><div class="text-wrapper-10">LOGIN</div></button>-->
-        <div class="overlap-9"><div class="text-wrapper-11">{{user.nickname}}</div></div>
+        <div class="overlap-9" style = "position: absolute; width: 250px; height: 60px; top: 476px;
+        left: 600px; background-color: #629c76; border-radius: 30px;"><div class="text-wrapper-11" style = "left: 30px;">{{user_info.nickname}}</div></div>
+        <a href = "/hubflix/user_update/{{user_info.user_id}}">
         <div class="content-create-wrapper">
           <div class="content-create"><img class="color" src="{%static 'img/img_ud/color-1.svg' %}" /></div>
         </div>
+        </a>
         <div class="overlap-10"><div class="text-wrapper-12">MY OTT</div></div>
         <div class="overlap-11">
           <a href = '/hubflix/user_detail_comm'>
           <div class="rectangle-3"></div>
-          <div class="text-wrapper-13">나의 커뮤니티</div>
+          <div class="text-wrapper-13">나의 정보</div>
           </a>
         </div>
         <div class="overlap-12">
           <div class="rectangle-3"></div>
           <div class="rectangle-4"></div>
           <a href = '/hubflix/user_detail_like'>
-          <div class="text-wrapper-14">관심 목록</div>
+          <div class="text-wrapper-14"><!--관심 목록--></div>
           </a>
           <a href = '/hubflix/user_detail_watch'>
-          <div class="text-wrapper-15">시청중인 콘텐츠</div>
+          <div class="text-wrapper-15"><!--시청중인 콘텐츠--></div>
           </a>
         </div>
       </div>

@@ -25,12 +25,15 @@
                 src="{%static 'img/img_ud/icon.svg' %}" /> <button class="login-button">
                 <div class="text-wrapper-2">LOGIN</div>
             </button>-->
-            <div class="overlap-group">
-                <div class="text-wrapper-3">{{user.nickname}}</div>
+            <div class="overlap-group" style = "position: absolute; width: 250px; height: 60px; top: 476px;
+            left: 600px; background-color: #629c76; border-radius: 30px;">
+                <div class="text-wrapper-3" style = "left: 30px;">{{user_info.nickname}}</div>
             </div>
+            <a href = "/hubflix/user_update/{{user_info.user_id}}">
             <div class="content-create-wrapper">
                 <div class="content-create"><img class="color" src="{%static 'img/img_ud/color-1.svg' %}" /></div>
             </div>
+            </a>
             <div class="overlap-2">
                 <div class="rectangle"></div>
                 <div class="rectangle-2"></div>
@@ -39,34 +42,41 @@
                 <a href='/hubflix/user_detail'>
                     <div class="text-wrapper-4">MY OTT</div>
                 </a>
-                <div class="text-wrapper-5">나의 커뮤니티</div>
+                <div class="text-wrapper-5">나의 정보</div>
                 <a href = '/hubflix/user_detail_like'>
-                    <div class="text-wrapper-6">관심 목록</div>
+                    <div class="text-wrapper-6"><!--관심 목록--></div>
                 </a>
                 <a href = '/hubflix/user_detail_watch'>
-                <div class="text-wrapper-7">시청중인 콘텐츠</div>
+                <div class="text-wrapper-7"><!--시청중인 콘텐츠--></div>
                 </a>
                 <div class="rectangle-5"></div>
                 <div class="frame">
                     <div class="overlap-group-2">
-                        <div class="rectangle-6"></div> <img class="union" src="{%static 'img/img_ud/union-2.svg' %}" />
-                        <div class="text-wrapper-8">내가 쓴 댓글</div>
+                        <div class="rectangle-6"></div> <!--<img class="union" src="{%static 'img/img_ud/union-2.svg' %}" />-->
+                        <div class="text-wrapper-8">나의 정보</div>
+                        <a href = "/hubflix/user_update/{{user_info.user_id}}">
+                        <div class="content-create-wrapper" style ="top: 0px; left: 220px;">
+                            <div class="content-create"><img class="color" src="{%static 'img/img_ud/color-1.svg' %}" /></div>
+                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="overlap-wrapper">
-                    <div class="overlap-3">
+                    <!--<div class="overlap-3">
                         <div class="rectangle-7"></div> <img class="union-2" src="{%static 'img/img_ud/union.svg' %}" />
                         <div class="text-wrapper-9">내가 쓴 게시물</div>
-                    </div>
+                    </div>-->
                 </div>
-                <p class="p">울면서 본 드라마 ㅠㅠ.... 너무 재밌었음 ㅠㅠ</p>
-                <p class="text-wrapper-10">저도 재밌게 봤어요 남주랑 여주랑 케미가 대박임!😍</p>
-                <div class="text-wrapper-11">다들 영화 동감 보셨나요?!</div>
-                <div class="text-wrapper-12">범죄도시3 후기.....🫢</div>
-                <div class="text-wrapper-13">다들 인생 영화가 무엇인가요?</div>
+                <p class="p" style = "width: 449px; height: 39px; top: 187px;left: 52px;">아이디 : {{user_info.user_id}}</p>
+                <p class="text-wrapper-10" style = "width: 449px; height: 39px; top: 235px;left: 52px;">닉네임 : {{user_info.nickname}} </p>
+                <p class="text-wrapper-11" style = "width: 449px; height: 39px; top: 283px;left: 52px;">이메일 : {{user_info.email}} </p>
+                <p class="text-wrapper-12" style = "width: 449px; height: 39px; top: 331px;left: 52px;">생일 : {{user_info.birth|date:'Y-m-d'}}</p>
+                <!--<p class="text-wrapper-13" style = "width: 449px; height: 39px; top: 379px;left: 52px;"></p>-->
             </div>
         </div>
     </div>
+    {% block body %}
+    {% endblock %}
 </body>
 
 </html>

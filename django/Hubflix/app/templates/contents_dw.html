@@ -53,12 +53,12 @@
             <div class="overlap-2" style="top: 740px;"> <button class="button">
                     <div class="overlap-group-2" >
                         <div class="rectangle"></div>
-                        <div class="text-wrapper-4" style="top: 20px;">커뮤니티</div>
+                        <div class="text-wrapper-4" style="top: 20px;"><!--커뮤니티--></div>
                     </div>
                 </button> <button class="overlap-wrapper">
                     <div class="overlap-group-2">
                         <div class="rectangle"></div>
-                        <div class="text-wrapper-4" style="top: 20px;">리뷰</div>
+                        <div class="text-wrapper-4" style="top: 20px;"><!--리뷰--></div>
                     </div>
                 </button> <button class="overlap-group-wrapper">
                     <div class="overlap-group-2">
@@ -68,13 +68,13 @@
                 </button> <a href = "/hubflix/contents_detail/{{movies.contents_id}}"><button class="div-wrapper">
                     <div class="text-wrapper-5" style="top: 20px;">작품정보</div>
                 </button> </a></div>
-            <div class="overlap-3" style="top:200px"> <!--<img class="img" src="img/image.png" />
-                <div class="view">
-                    <div class="overlap-4">
-                        <div class="text-wrapper-6">찜하기</div> <img class="bookmark" src="img/bookmark.png" />
+            <div class="overlap-3" style="top:200px"> <!--<img class="img" src="img/image.png" />-->
+                <div class="view" style = "left: 1200px; cursor: pointer;">
+                    <div class="overlap-4" >
+                        <div class="text-wrapper-7">찜하기</div> <img class="bookmark" src="{% static 'img/huflixm.png' %}" />
                     </div>
                 </div>
-                <div class="view-2">
+                <!--<div class="view-2">
                     <div class="overlap-4">
                         <div class="text-wrapper-7">보는중</div> <img class="eye" src="img/eye.png" />
                     </div>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="view-3"  style ="top: 10px; left: 410px;">
                     <div class="view-4">
-                        <div class="text-wrapper-8">{{movies.release_date}}</div>
+                        <div class="text-wrapper-8">{{movies.release_date|date:'Y-m-d'}}</div>
                     </div>
                     <div class="view-4">
                         <div class="text-wrapper-8">{{movies.type}}</div>
@@ -112,9 +112,13 @@
                 </div>
             </a>
             </div> 
-            <a href="javascript:history.back();">
-            <img style="position: absolute; width: 270px;
-            height: 240px; top: 20px; left: -90px;" src="{% static 'img/back.png' %}"/>
+            <a href="/hubflix/search">
+            <img style="position: absolute; width: 80px;
+            height: 80px; top: 20px; left: -90px;" src="{%static 'img/2.png' %}"/>
+            </a>
+            <a href="/hubflix/main">
+                <img style="position: absolute; width: 80px;
+                height: 80px; top: 20px; left: 10px;" src="{%static 'img/huflixm.png' %}" />
             </a>
         </div>
     </div>

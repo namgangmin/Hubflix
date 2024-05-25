@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="{% static 'css/globals.css' %}" />
   <link rel="stylesheet" href="{% static 'css/styleguide.css' %}" />
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
   {% block css %}
   {% endblock %}
 </head>
@@ -17,7 +19,7 @@
       <div class="frame">
         <div class="view">
           {% for movie in movies5 %}
-          <a href="/hubflix/contents_detail/{{movie.contents_id}}">
+            <a href="/hubflix/contents_detail/{{movie.contents_id}}">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
             <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
             color: #ffffff;font-size: 20px;text-align: center;
@@ -29,8 +31,8 @@
             <div class="image"></div>
             <div class="image"></div>-->
         </div>
-        <!--<img class="arrow" src="{%static 'img/arrow.png' %}" />-->
-        <div class="text-wrapper">회원님이 좋아할 만한 컨텐츠</div>
+        <!--<img class="arrow" src="{%static 'img/arrow-3.png' %}" />-->
+        <div class="text-wrapper">회원님이 좋아할 만한 영화</div>
         <img class="vector" src="{%static 'img/vector.png' %}" />
         <div class="div">
           {% for movie in movies4 %}
@@ -68,7 +70,7 @@
         <img class="vector-3" src="{%static 'img/vector-2.svg'%}" />
         <div class="OTT">
           {% for movie in movies2 %}
-          <a href="/hubflix/contents_detail/{{movie.conents_id}}">
+          <a href="/hubflix/contents_detail/{{movie.contents_id}}">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
             <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
             color: #ffffff;font-size: 20px;text-align: center;
@@ -83,21 +85,39 @@
         <!--<img class="arrow-3" src="{%static 'img/arrow-3.png'%}" />-->
         <div class="text-wrapper-4">평점이 높은 컨텐츠</div>
         <img class="vector-4" src="{%static 'img/vector-3.svg'%}" />
-        <div class="view-3">
-          {% for movie in movies %}
+        <div class="view-3" id = "view-3" style ="top: 831px;
+        left: 196px;
+        display: flex;
+        width: 960px;
+        align-items: flex-start;
+        gap: 69px;
+        position: absolute; " >        
+        {% for movie in movies %}
           <a href="/hubflix/contents_detail/{{movie.contents_id}}">
-            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
+            
+            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image"  
+            style = "position: relative; width: 187px; height: 294px; background-color: #bee2ca2b;
+            border-radius: 30px;   display: block;">
             <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
             color: #ffffff;font-size: 20px;text-align: center;
-            overflow: hidden;text-overflow: ellipsis;">{{movie.title}}</p>
+            overflow: hidden;text-overflow: ellipsis;">{{movie.title}}</p> 
+            
           </a>
-          {% endfor %}
+
           <!--<div class="image"></div>
             <div class="image"></div>
             <div class="image"></div>
             <div class="image"></div>-->
-        </div>
-        <!--<img class="arrow-4" src="{%static 'img/arrow-4.png' %}" />-->
+            {% endfor %}
+            
+        <!--<img class="arrow-4" onclick ="moveSlide(1)" style ="top: 963x;
+        left: 1174px;
+        position: absolute;
+        width: 56px;
+        height: 34px; cursor: pointer;"src="{%static 'img/arrow-4.png' %}" />-->
+        
+      </div>
+        
         <div class="overlap">
           <div class="text-wrapper-5">최신 컨텐츠</div>
           <img class="vector-5" src="{%static 'img/vector-4.svg' %}" />
@@ -118,10 +138,18 @@
               <img class="ellipse" src="{%static 'img/ellipse-2.png' %}" /> <img class=" vector-6"
                 src="{%static 'img/vector-5.png' %}" />
             </div>
+            <a href = "/hubflix/netflix">
             <img class="image-2" src="{%static 'img/image-3.png' %}" />
+            </a>
+            <a href = "/hubflix/wavve">
             <img class="image-3" src="{%static 'img/image.png' %}" />
+            </a>
+            <a href = "/hubflix/watcha">
             <img class="image-3" src="{%static 'img/image-2.png' %}" />
+            </a>
+            <a href = "/hubflix/disney">
             <img class="image-3" src="{%static 'img/image-5.png' %}" />
+            </a>
             <img class="image-2" src="{%static 'img/image-4.png' %}" />
           </div>
         </div>
@@ -150,16 +178,16 @@
           <img class="icon-2" src="{%static 'img/icon-2.png' %}" />
         </a>
         <div class="overlap-3">
-          <a href='/hubflix'>
+          <a href='/hubflix/login'>
             <img class="login-button" src="{%static 'img/login-button.png' %}"> />
             <div class="text-wrapper-8">LOGOUT</div>
           </a>
         </div>
         <div class="navbar">
+          <a href='/hubflix/tv'>
           <div class="text-wrapper-9">시리즈</div>
-          <a href = '/hubflix/movie'>
-          <div class="text-wrapper-9">영화</div>
           </a>
+          <div class="text-wrapper-9">영화</div>
           <a href='/hubflix/chatbot'>
           <div class="text-wrapper-9">AI 추천</div>
           </a>

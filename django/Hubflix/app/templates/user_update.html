@@ -13,7 +13,7 @@
     <div class="screen">
       <div class="frame-wrapper">
         <div class="frame">
-          <a href = '/hubflix/login'>
+          <a href = '/hubflix/user_detail_comm'>
           <div class="hubflix">        
             <img class="vector" src="{% static 'img/vector_sign.svg' %}" />
             <div class="text-wrapper">HUBFLIX</div>         
@@ -49,26 +49,26 @@
                 <div class="view-wrapper">
                   <div class="div-wrapper">
                     <!--<div class="overlap-group-2">-->
-                      <input type="date" name="birth" id="birth" value = "2024-01-01" min = "1900-01-01" max = "2024-05-15" class="overlap-group-2" 
+                      <!--<input type="date" name="birth" id="birth" value = "2024-01-01" min = "1900-01-01" max = "2024-05-15" class="overlap-group-2" 
                                 tabindex="6" 
                                 style="font-family: 'Anaheim', Helvetica; color: #ffffff;
-                                font-size: 24px; "></input>
+                                font-size: 24px; "></input>-->
                       <!--<div class="text-wrapper-3">ex)20020521</div></div>-->
                   </div>
                 </div>
-                <div class="text-wrapper-4">생년월일</div>
+                <!--<div class="text-wrapper-4">생년월일</div>-->
               </div>
               <div class="group-wrapper">
                 <div class="group">
                   <div class="view-2">
                     <!--<div class="overlap-group-2">-->
-                      <input type="text" name="nickname" id="nickname" class="overlap-group-2" 
+                      <!--<input type="text" name="nickname" id="nickname" class="overlap-group-2" 
                                 placeholder ="ex&#41 홍길동" tabindex="5"  
                                 style="font-family: 'Anaheim', Helvetica; color: #ffffff;
-                                font-size: 24px; "></input>                                
+                                font-size: 24px; "></input>-->                                
                       <!--<div class="text-wrapper-5">ex) 홍길동</div></div>-->
                   </div>
-                  <div class="text-wrapper-6">닉네임</div>
+                  <!--<div class="text-wrapper-6">닉네임</div>-->
                 </div>
               </div>
               <div class="view-3">
@@ -78,11 +78,10 @@
                       <!--<div class="frame-3">-->
                         <!--<div class="frame-4">-->
                           <!--<div class="icon-eye-wrapper">-->
-                            <input type="password" name="password2" id="password2" class="frame-3" 
-                                placeholder =""  tabindex="4"
+                            <input type="date" name="birth" id="birth" value = "{{user_info.birth|date:'Y-m-d'}}" min = "1900-01-01" max = "2024-05-15" class="overlap-group-2" 
+                                tabindex="4" 
                                 style="font-family: 'Anaheim', Helvetica; color: #ffffff;
-                                font-size: 24px; ">
-                            </input>
+                                font-size: 24px; left : -1px;"></input>
                             <!--<img class="icon-eye" src="{% static 'img/icon-eye-1_sign.png' %}" /></img>-->
                           <!--</div>-->
                         <!--</div>-->
@@ -90,7 +89,7 @@
                       <!--<div class="text-wrapper-7">영문,숫자 조합 8~16자</div>-->
                     </div>
                   </div>
-                  <div class="text-wrapper-6">비밀번호 확인</div>
+                  <div class="text-wrapper-6">생년월일</div>
                 </div>
               </div>
               <div class="view-5">
@@ -101,10 +100,10 @@
                         <!--<div class="frame-3">-->
                           <!--<div class="frame-4">-->
                             <!--<div class="icon-eye-wrapper">-->
-                              <input type="password" name="password" id="password" class="frame-3" 
-                                placeholder ="영문,숫자 조합 8~16자" tabindex="3"  
+                                <input type="text" name="nickname" id="nickname" class="overlap-group-2" 
+                                value = "{{user_info.nickname}}" tabindex="3"  
                                 style="font-family: 'Anaheim', Helvetica; color: #ffffff;
-                                font-size: 24px; "></input>
+                                font-size: 24px; left: -1px;"></input>
                               <!--<img class="icon-eye" src="{% static 'img/icon-eye-1_sign.png' %}" /></img>-->
                             <!--</div>-->
                           <!--</div>-->
@@ -112,14 +111,14 @@
                         <!--<div class="text-wrapper-7">영문,숫자 조합 8~16자</div>-->
                       </div>
                     </div>
-                    <div class="text-wrapper-8">비밀번호</div>
+                    <div class="text-wrapper-8">닉네임</div>
                   </div>
                 </div>
               </div>
               <div class="view-7">
                 <div class="view-4">
-                  <input type="text" name="email" id="email" class="overlap-group-2" 
-                  placeholder ="ex&#41 abc123@naver.com" tabindex="2"  
+                  <input type="text" name="email" id="email" class="overlap-group-2"
+                  value ="{{user_info.email}}" tabindex="2"  
                   style="font-family: 'Anaheim', Helvetica; color: #ffffff;
                   font-size: 24px; "></input>
                   <!--<div class="overlap-group-2"><div class="text-wrapper-9">ex)abc@gmail.com</div></div>-->
@@ -128,16 +127,16 @@
               </div>
               <div class="view-8">
                 <div class="view-4">
-                  <input type="text" name="user_id" id="user_id" class="overlap-group-2" 
-                placeholder ="ex&#41 abc123" tabindex="1"
-                style="font-family: 'Anaheim', Helvetica; color: #ffffff;
-                font-size: 24px; "></input>
+                    <input type="button" class="overlap-group-2"
+                    value ="{{user_info.user_id}}"
+                    style="font-family: 'Anaheim', Helvetica; color: #ffffff; text-align: left;
+                    font-size: 24px; "></input>
                   <!--<div class="overlap-group-2"><div class="text-wrapper-9">ex)abc123</div></div>-->
                 </div>
                 <div class="text-wrapper-8">아이디</div>
               </div>
             </div>
-            <div class="text-wrapper-10">회원가입</div>
+            <div class="text-wrapper-10">정보 수정</div>
           </form>
           </div>
           {% endblock %}

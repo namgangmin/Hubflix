@@ -18,6 +18,7 @@ import re
 from django.db.models import Q
 import pandas as pd
 import numpy as np
+import keras
 
 from .forms import MovieForm
 from .models import Contents
@@ -27,6 +28,8 @@ from .models import WatchingLog
 from datetime import datetime
 
 from .recommend import find_sim_movie
+
+
 
 # Create your views here.
 def main_page(request):
@@ -116,10 +119,12 @@ def signup(request):
             nickname = request.POST.get('nickname', None)
             email = request.POST.get('email', None)
             birth = request.POST.get('birth', None)
-
             exist_user = Users.objects.filter(user_id = id) # 존재하는 id 인지 비교
-            
-            if exist_user: # 존재하면 다시 회원가입 창 반환
+
+            if id == "" or password == "" or nickname == "" or email =="" or birth =="" :
+                messages.add_message(request, messages.ERROR, '입력되지 않은 정보가 존재합니다.')
+                return render (request, 'sign_up.html')
+            elif exist_user: # 존재하면 다시 회원가입 창 반환
                 messages.add_message(request, messages.ERROR, 'ID가 이미 존재합니다')
                 return render (request, 'sign_up.html')
             elif Users.objects.filter(nickname = nickname):
@@ -128,16 +133,20 @@ def signup(request):
             elif not re.match("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",email) :
                 messages.add_message(request, messages.ERROR, '이메일 형식이 틀렸습니다')
                 return render (request, 'sign_up.html')
-            elif not datetime.datetime.strptime(birth,"%Y-%m-%d"):
+            elif not datetime.strptime(birth,"%Y-%m-%d"):
                 messages.add_message(request, messages.ERROR, '생일의 날짜 형식이 틀렸습니다')
                 return render (request, 'sign_up.html')
+            #elif password.__len__ 
+            
             else:
-                Users.objects.create(
+                print(password.__len__)
+                p = Users.objects.create(
                 user_id = id,
                 password = password,
                 nickname = nickname,
                 email = email,
                 birth = birth)
+                p.save()
                 
                 return redirect('./login') # 회원가입 완료
             #try:
@@ -169,21 +178,23 @@ def main_yl(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,4):
+    for i in range(1,5):
+        if movies5.count() == 4:
+            continue
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
-        if movies5.count() == 4:
-            exit
+
     print(movies5)
+    
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
@@ -196,8 +207,16 @@ def user_detail(request):
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
+    user_info = Users.objects.get(user_id = context['user_id'])
 
-    return render(request, 'user_detail.html', {'user' : context})
+    ott = {}
+    ott['Netflix'] = Ott.objects.get(ott_name = 'Netflix')
+    ott['Wavve'] = Ott.objects.get(ott_name = 'wavve')
+    ott['Watcha'] = Ott.objects.get(ott_name = 'Watcha')
+    ott['Disney'] = Ott.objects.get(ott_name = 'Disney Plus')
+    ott['Naver_Store'] = Ott.objects.get(ott_name = 'Naver Store')
+
+    return render(request, 'user_detail.html', {'user' : context, 'user_info' : user_info, 'ott' : ott})
 
 
 def chatbot(request):
@@ -210,7 +229,9 @@ def user_detail_comm(request):
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
 
-    return render(request, 'user_detail_comm.html', {'user' : context})
+    user_info = Users.objects.get(user_id = context['user_id'])
+
+    return render(request, 'user_detail_comm.html', {'user' : context, 'user_info' : user_info})
 
 def user_detail_like(request):
     context = {}
@@ -243,6 +264,24 @@ def contents_detail(request, contents_id):
     )
 
     return render(request, 'contents_detail.html', {'movies': movies, 'contents_id' : contents_id})
+
+def contents_detail_tv(request, contents_id):
+    movies = Contents.objects.get(contents_id = contents_id)
+
+    user_ids = request.session['user_id']
+    user = Users.objects.get(user_id = user_ids).user_id
+    print(user)
+    content_title = movies.title
+    contents_id = contents_id
+    WatchingLog.objects.create(
+        user_id = user,
+        contents_title = content_title,
+        contents_id = contents_id,
+        time = datetime.now()
+    #    id = user
+    )
+
+    return render(request, 'contents_detail_tv.html', {'movies': movies, 'contents_id' : contents_id})
 
 def search(request):
     if request.method == "POST":
@@ -310,14 +349,72 @@ def tv(request):
                                       release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
     movies3 = Contents.objects.filter(~Q(overview=""),type='tv').order_by('-vote_average')[3:7] # 지금 뜨는 컨텐츠
     movies4 = Contents.objects.filter(~Q(overview=""),type='tv')[:4] 
-    movies5 = Contents.objects.filter(~Q(overview=""),type='tv').order_by('-release_date')[0:4]
+    exist = WatchingLog.objects.filter(user_id = request.session['user_id'])
+    
+    if exist:
+        stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
+        stitles = stitle[0]['contents_title']
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        print(similar_movies)
+    else :
+        stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
+        stitles = stitle[0]['title']
+        print(stitles)
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+    
+    movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
+    for i in range(1,5):
+        if movies5.count() == 4:
+            continue
+        movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
+        movies5 = movies5 | movie
 
+    print(movies5)
+    
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
 
     return render(request, 'tv.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5, 'user' : context})
+
+def movie(request):
+    movies = Contents.objects.filter(~Q(overview=""),type='movie',release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
+    movies2 = Contents.objects.filter(~Q(overview=""),type='movie',vote_count__gte = 50,
+                                      release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-vote_average')[:4] # 평점이 높은 컨텐츠
+    movies3 = Contents.objects.filter(~Q(overview=""),type='movie',vote_count__gte = 50,
+                                      release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:4] # 지금 뜨는 컨텐츠
+    movies4 = Contents.objects.filter(~Q(overview=""),type='movie',release_date__gt=date.today()).order_by('release_date')[:4] # 개봉 예정작
+    
+    exist = WatchingLog.objects.filter(user_id = request.session['user_id'])
+    
+    if exist:
+        stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
+        stitles = stitle[0]['contents_title']
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+        print(similar_movies)
+    else :
+        stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
+        stitles = stitle[0]['title']
+        print(stitles)
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
+    
+    movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
+    for i in range(1,5):
+        if movies5.count() == 4:
+            continue
+        movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
+        movies5 = movies5 | movie
+
+    print(movies5)
+    
+    context = {}
+    context['user_id'] = request.session['user_id']
+    context['nickname'] = request.session['nickname']
+
+    return render(request, 'movie.html', {'movies': movies, 'movies2' : movies2, 
+                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
+                                          'user' : context})
 
 def netflix(request):
     movies = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Netflix')|Q(buy__contains='Netflix')|Q(flatrate__contains='Netflix'),
@@ -332,20 +429,21 @@ def netflix(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,4):
+    for i in range(1,5):
+        if movies5.count() == 4:
+            continue
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
-        if movies5.count() == 4:
-            exit
+
     print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
@@ -368,20 +466,20 @@ def wavve(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,4):
+    for i in range(1,5):
+        if movies5.count() == 4:
+            continue
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
-        if movies5.count() == 4:
-            exit
     print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
@@ -404,20 +502,21 @@ def watcha(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,4):
+    for i in range(1,5):
+        if movies5.count() == 4:
+            continue
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
-        if movies5.count() == 4:
-            exit
+
     print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
@@ -440,20 +539,20 @@ def disney(request):
     if exist:
         stitle = WatchingLog.objects.filter(user_id = request.session['user_id']).order_by('-time')[:1].values('contents_title')
         stitles = stitle[0]['contents_title']
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
         print(similar_movies)
     else :
         stitle = Contents.objects.filter(vote_count__gte=50,release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-popularity')[:1].values('title')
         stitles = stitle[0]['title']
         print(stitles)
-        similar_movies = list(find_sim_movie(stitles,5)['title'])
+        similar_movies = list(find_sim_movie(stitles,6)['title'])
     
     movies5 = Contents.objects.filter(~Q(overview=""),title = similar_movies[0]).order_by('-release_date')
-    for i in range(1,4):
+    for i in range(1,5):
+        if movies5.count() == 4:
+            continue
         movie =Contents.objects.filter(~Q(overview=""),title = similar_movies[i]).order_by('-release_date')
         movies5 = movies5 | movie
-        if movies5.count() == 4:
-            exit
     print(movies5)
     context = {}
     context['user_id'] = request.session['user_id']
@@ -462,3 +561,57 @@ def disney(request):
     return render(request, 'disney.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
                                           'user' : context})
+
+def user_update(request, user_id):
+    if request.method == "POST":
+        nickname = request.POST.get('nickname', None)
+        email = request.POST.get('email', None)
+        birth = request.POST.get('birth', None) 
+        
+
+        if  nickname == "" or email =="" or birth =="" :
+            messages.add_message(request, messages.ERROR, '입력되지 않은 정보가 존재합니다.')
+            return redirect('./'+user_id)
+        elif Users.objects.filter(~Q(user_id=user_id),nickname = nickname):
+            messages.add_message(request, messages.ERROR, '닉네임이 이미 존재합니다')
+            return redirect('./'+user_id)
+        elif not re.match("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",email) :
+            messages.add_message(request, messages.ERROR, '이메일 형식이 틀렸습니다')
+            return redirect('./'+user_id)
+        elif not datetime.strptime(birth,"%Y-%m-%d"):
+            messages.add_message(request, messages.ERROR, '생일의 날짜 형식이 틀렸습니다')
+            return redirect('./'+user_id)
+        #elif password.__len__ 
+            
+        else:
+            #Users.objects.create(
+            #user_id = id,
+            #password = password,
+            #nickname = nickname,
+            #email = email,
+            #birth = birth)
+            u = Users.objects.get(user_id = user_id)
+            u.nickname = nickname
+            u.email = email
+            u.birth = birth
+            u.save()
+             
+            return redirect('/hubflix/user_detail_comm') # 회원수정 완료
+            #try:
+            #    user = Users.objects.get(username=request.POST['username'])
+            #    return render(request,'sign_up.html',{'error': '이미 존재하는 아이디입니다.'})
+            #except Users.DoesNotExist:
+            #    user=Users.objects.create_user(
+            #        user_id=request.POST['user_id'], password=request.POST['password'],
+            #        email=request.POST['useremail'], name=request.POST['username'], nickname=request.POST['nickname'],
+            #        birth=request.POST['birth'])
+            #    auth.login(request,user)
+            #    return redirect('./login')
+    #else:
+    #        messages.add_message(request, messages.ERROR, '비밀번호가 다릅니다')
+    #        return render (request, 'sign_up.html')
+    else:
+        user_info = Users.objects.get(user_id=user_id)
+        return render(request,'user_update.html',{'user_info': user_info})
+
+

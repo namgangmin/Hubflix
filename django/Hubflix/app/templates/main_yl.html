@@ -19,7 +19,7 @@
       <div class="frame">
         <div class="view">
           {% for movie in movies5 %}
-          <a href="/hubflix/contents_detail/{{movie.contents_id}}">
+            <a href="/hubflix/contents_detail/{{movie.contents_id}}">
             <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image">
             <p style = "font-family: 'Dosis-Bold', Helvetica;font-weight: 700;max-width : 180px;
             color: #ffffff;font-size: 20px;text-align: center;
@@ -187,7 +187,9 @@
           <a href='/hubflix/tv'>
           <div class="text-wrapper-9">시리즈</div>
           </a>
+          <a href='/hubflix/movie'>
           <div class="text-wrapper-9">영화</div>
+          </a>
           <a href='/hubflix/chatbot'>
           <div class="text-wrapper-9">AI 추천</div>
           </a>

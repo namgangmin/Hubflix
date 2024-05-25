@@ -32,9 +32,14 @@
             </div>
         </form>
         {% endblock %}
+        
             <div class="frame">
+                <a href="/hubflix/main">
+                    <img style="position: absolute; width: 80px;
+                    height: 80px; top: 20px; left: 10px;" src="{%static 'img/huflixm.png' %}" />
+                </a>
                 <div style="display: flex; width: 960px; align-items: flex-start; gap: 69px;
-                position: absolute; top: 250px; left: 600px;">  
+                position: absolute; top: 250px; left: 450px;">  
                     {% for movie in movies %}
                     <a href="/hubflix/contents_detail/{{movie.contents_id}}">
                     <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image-2">
@@ -49,7 +54,7 @@
             </div>
             <div class="element-wrapper">
                 <div style="display: flex; width: 960px; align-items: flex-start; gap: 69px;
-                position: absolute; top: 650px; left: 600px;"> 
+                position: absolute; top: 650px; left: 450px;"> 
                        {% for movie in movies2 %}
                         <a href="/hubflix/contents_detail/{{movie.contents_id}}">
                         <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image-2">
@@ -64,7 +69,7 @@
             </div>
             <div class="div-wrapper">
                 <div style="display: flex; width: 960px; align-items: flex-start; gap: 69px;
-                position: absolute; top: 1050px; left: 600px;"> 
+                position: absolute; top: 1050px; left: 450px;"> 
                     {% for movie in movies3 %}
                         <a href="/hubflix/contents_detail/{{movie.contents_id}}">
                         <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" class="image-2">

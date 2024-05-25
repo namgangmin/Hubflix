@@ -20,5 +20,5 @@ from app import views
 
 urlpatterns = [
     # path("admin/", admin.site.urls),
-    path('hubflix/', include('app.urls'))
+    path('hubflix/', include('app.urls')),
 ]

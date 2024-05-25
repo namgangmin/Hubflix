@@ -21,13 +21,9 @@
                 </div>
                 </a>
             </div> 
-            <a href="/hubflix/search">
-                <img style="position: absolute; width: 80px;
-                height: 80px; top: 20px; left: -90px;" src="{%static 'img/2.png' %}" />
-            </a>
-            <a href="/hubflix/main">
-                <img style="position: absolute; width: 80px;
-                height: 80px; top: 20px; left: 10px;" src="{%static 'img/huflixm.png' %}" />
+            <a href="javascript:history.back();">
+                <img style="position: absolute; width: 270px;
+                height: 240px; top: 20px; left: -90px;" src="{% static 'img/back.png' %}" />
             </a>
             <div class="overlap" style="top: 800px;  height: 700px;">
                 <div class="view">
@@ -71,14 +67,13 @@
                     <!--<p class="p"> {{movies.overview}} </p>-->
                 </div>
             </div>
-            <div class="overlap-group" style="top: 200px; "> 
-                <!--<img class="ott" src="{% static 'img/ott.png' %}" />-->
-                <div class="overlap-wrapper" style = "left: 1200px; cursor: pointer;">
+            <div class="overlap-group" style="top: 200px; "> <!--<img class="ott" src="{% static 'img/ott.png' %}" />
+                <div class="overlap-wrapper">
                     <div class="overlap-2">
-                        <div class="text-wrapper-2">찜하기</div> <img class="bookmark" src="{% static 'img/huflixm.png' %}" />
+                        <div class="text-wrapper-2">찜하기</div> <img class="bookmark" src="{% static 'img/bookmark.png' %}" />
                     </div>
                 </div>
-                <!--<div class="overlap-group-wrapper">
+                <div class="overlap-group-wrapper">
                     <div class="overlap-2">
                         <div class="text-wrapper-3">보는중</div> <img class="eye" src="{% static 'img/eye.png' %}" />
                     </div>
@@ -104,17 +99,15 @@
                     <div class="text-wrapper-6" style="width: 1000px; white-space: nowrap; text-align: left;">{{movies.title}}</div>
                 </div> <img class="image" style="left: 130px;" src="https://image.tmdb.org/t/p/w200{{ movies.poster_path }}" />
             </div>
-            <div class="overlap-3" style="top: 740px; "> 
-                <button class="button">
+            <div class="overlap-3" style="top: 740px; "> <button class="button">
                     <div class="overlap-group-2" style="top: 60;">
                         <div class="rectangle" style="top: 60;"></div>
-                        <div class="text-wrapper-7" style="top: 20px;"><!--커뮤니티--></div>
+                        <div class="text-wrapper-7" style="top: 20px;">커뮤니티</div>
                     </div>
-                </button> 
-                <button class="button-2">
+                </button> <button class="button-2">
                     <div class="overlap-group-2">
                         <div class="rectangle"></div>
-                        <div class="text-wrapper-7" style="top: 20px;"><!--리뷰--></div>
+                        <div class="text-wrapper-7" style="top: 20px;">리뷰</div>
                     </div>
                 </button> <button class="button-3">
                     <div class="overlap-group-2" >

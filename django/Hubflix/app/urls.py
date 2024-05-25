@@ -33,13 +33,15 @@ urlpatterns = [
     path('user_detail_like',  views.user_detail_like, name='user_detail_like.html'),
     path('user_detail_watch',  views.user_detail_watch, name='user_detail_watch.html'),
     path('contents_detail/<int:contents_id>',  views.contents_detail, name='contents_detail.html'),
+    path('contents_detail_tv/<int:contents_id>',  views.contents_detail_tv, name='contents_detail_tv.html'),
     path('search',  views.search, name='search.html'),
     path('search_result/<title>',  views.search_result, name='search_result.html'),
     path('contents_detail/<int:contents_id>/watching',  views.contents_dw, name='contents_dw.html'),
     path('tv',  views.tv, name='tv.html'),
+    path('movie',  views.movie, name='movie.html'),
     path('netflix',  views.netflix, name='netflix.html'),
     path('wavve',  views.wavve, name='wavve.html'),
     path('watcha',  views.watcha, name='watcha.html'),
     path('disney',  views.disney, name='disney.html'),
-
+    path('user_update/<user_id>',  views.user_update, name='user_update.html'),
 ]
