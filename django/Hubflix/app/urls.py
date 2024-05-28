@@ -21,8 +21,7 @@ from app import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('upload', views.upload_movie, name='upload_movie.html'),
-    path('list', views.movie_list, name='movie_list.html'),
-   
+    path('list', views.movie_list, name='movie_list.html'),   
     path('', views.movie_list2, name='index.html'),
     path('main',  views.main_yl, name='main_yl.html'),
     path('login',  views.login, name='login.html'),
@@ -44,4 +43,5 @@ urlpatterns = [
     path('watcha',  views.watcha, name='watcha.html'),
     path('disney',  views.disney, name='disney.html'),
     path('user_update/<user_id>',  views.user_update, name='user_update.html'),
+    path('chat_test',  views.chat_service),
 ]

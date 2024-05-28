@@ -19,6 +19,7 @@ from django.db.models import Q
 import pandas as pd
 import numpy as np
 import keras
+import json
 
 from .forms import MovieForm
 from .models import Contents
@@ -28,6 +29,10 @@ from .models import WatchingLog
 from datetime import datetime
 
 from .recommend import find_sim_movie
+
+from django.views.decorators.csrf import csrf_exempt
+
+
 
 
 
@@ -614,4 +619,12 @@ def user_update(request, user_id):
         user_info = Users.objects.get(user_id=user_id)
         return render(request,'user_update.html',{'user_info': user_info})
 
-
+@csrf_exempt
+def chat_service(request):
+    if request.method == 'POST':
+        input1 = request.POST['input1']
+        output = dict()
+        output['response'] = "이건 응답"
+        return HttpResponse(json.dumps(output), status=200)
+    else:
+        return render(request, 'chat_test.html')
