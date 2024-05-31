@@ -32,7 +32,10 @@ from .recommend import find_sim_movie
 
 from django.views.decorators.csrf import csrf_exempt
 
+import requests
+import random
 
+#from .faq_chatbot import faq_answer #,faq_search
 
 
 
@@ -619,12 +622,22 @@ def user_update(request, user_id):
         user_info = Users.objects.get(user_id=user_id)
         return render(request,'user_update.html',{'user_info': user_info})
 
-@csrf_exempt
+'''@csrf_exempt
 def chat_service(request):
     if request.method == 'POST':
         input1 = request.POST['input1']
+        response = faq_answer(input1)
         output = dict()
-        output['response'] = "이건 응답"
+        output['response'] = response
         return HttpResponse(json.dumps(output), status=200)
     else:
-        return render(request, 'chat_test.html')
+        return render(request, 'chat_test.html')'''
+    
+'''@csrf_exempt
+def search_keywords(request):
+    if request.method == 'POST':
+        input1 = request.POST['input1']
+        response = faq_search(input1)
+
+        return HttpResponse(json.dumps(response), status=200)'''
+

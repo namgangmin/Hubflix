@@ -43,5 +43,7 @@ urlpatterns = [
     path('watcha',  views.watcha, name='watcha.html'),
     path('disney',  views.disney, name='disney.html'),
     path('user_update/<user_id>',  views.user_update, name='user_update.html'),
-    path('chat_test',  views.chat_service),
+    #path('chat_test',  views.chat_service),
+    #path('search_keywords',  views.search_keywords),
 ]
+
