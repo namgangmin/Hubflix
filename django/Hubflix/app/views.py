@@ -206,10 +206,11 @@ def main_yl(request):
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
+    user1 = Users.objects.get(user_id=context['user_id'])
 
     return render(request, 'main_yl.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
-                                          'user' : context})
+                                          'user' : context, 'user1' : user1})
 
 def user_detail(request):
     context = {}
@@ -382,9 +383,10 @@ def tv(request):
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
+    user1 = Users.objects.get(user_id=context['user_id'])
 
     return render(request, 'tv.html', {'movies': movies, 'movies2' : movies2, 
-                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5, 'user' : context})
+                                          'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5, 'user' : context, 'user1' : user1})
 
 def movie(request):
     movies = Contents.objects.filter(~Q(overview=""),type='movie',release_date__range=[date.today()-timedelta(days=3600), date.today()]).order_by('-release_date')[:4] # 최신 컨텐츠
@@ -419,10 +421,11 @@ def movie(request):
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
+    user1 = Users.objects.get(user_id=context['user_id'])
 
     return render(request, 'movie.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
-                                          'user' : context})
+                                          'user' : context, 'user1' : user1})
 
 def netflix(request):
     movies = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Netflix')|Q(buy__contains='Netflix')|Q(flatrate__contains='Netflix'),
@@ -456,10 +459,11 @@ def netflix(request):
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
+    user1 = Users.objects.get(user_id=context['user_id'])
 
     return render(request, 'netflix.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
-                                          'user' : context})
+                                          'user' : context, 'user1' : user1})
 
 def wavve(request):
     movies = Contents.objects.filter(~Q(overview=""),Q(rent__contains='wavve')|Q(buy__contains='wavve')|Q(flatrate__contains='wavve'),
@@ -492,10 +496,11 @@ def wavve(request):
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
+    user1 = Users.objects.get(user_id=context['user_id'])
 
     return render(request, 'wavve.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
-                                          'user' : context})
+                                          'user' : context, 'user1' : user1})
 
 def watcha(request):
     movies = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Watcha')|Q(buy__contains='Watcha')|Q(flatrate__contains='Watcha'),
@@ -529,10 +534,11 @@ def watcha(request):
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
+    user1 = Users.objects.get(user_id=context['user_id'])
 
     return render(request, 'watcha.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
-                                          'user' : context})
+                                          'user' : context, 'user1' : user1})
 
 def disney(request):
     movies = Contents.objects.filter(~Q(overview=""),Q(rent__contains='Disney')|Q(buy__contains='Disney')|Q(flatrate__contains='Disney'),
@@ -565,10 +571,11 @@ def disney(request):
     context = {}
     context['user_id'] = request.session['user_id']
     context['nickname'] = request.session['nickname']
+    user1 = Users.objects.get(user_id=context['user_id'])
 
     return render(request, 'disney.html', {'movies': movies, 'movies2' : movies2, 
                                           'movies3' : movies3, 'movies4' : movies4, 'movies5' : movies5,
-                                          'user' : context})
+                                          'user' : context, 'user1' : user1})
 
 def user_update(request, user_id):
     if request.method == "POST":
