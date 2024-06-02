@@ -15,15 +15,15 @@
   <div class="screen">
     <div class="frame-wrapper">
       <div class="frame">
-        <div style="display: flex; align-items: center; justify-content: space-between; position:fixed;
+        <!--<div style="display: flex; align-items: center; justify-content: space-between; position:fixed;
             padding: 3px 1px; top: 65%; left: 1600px; transform: translateY(-50%)">
             <iframe allow="microphone;" width="380" height="600"
             src="https://console.dialogflow.com/api-client/demo/embedded/8a99e3c3-265c-49e7-96f4-eb841bb3d12c">
             </iframe>
-            <!--<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+            <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
             <df-messenger intent="WELCOME" chat-title="Hubflix" agent-id="8a99e3c3-265c-49e7-96f4-eb841bb3d12c" language-code="ko" max-query-length="500">
-            </df-messenger>-->
-            </div>
+            </df-messenger>
+            </div>-->
         <div class="view">
           {% for movie in movies5 %}
           <a href="/hubflix/contents_detail/{{movie.contents_id}}">
@@ -163,9 +163,9 @@
         top: 80px; left: 900px; color: #ffffff; font-size: 20px;
         font-family: 'Dosis', Helvetica; font-weight: 500;">{{user.nickname}}님</p>
         <!--<img class="bell-icon" src="{%static 'img/bell-icon.png' %}" />-->
-        <!--<a href='/hubflix/chatbot'>
+        <a href='http://127.0.0.1:5000'>
           <img class="icon-2" src="{%static 'img/icon-2.png' %}" />
-        </a>-->
+        </a>
         <div class="overlap-3">
           <a href='/hubflix/login'>
             <img class="login-button" src="{%static 'img/login-button.png' %}"> />
@@ -177,10 +177,10 @@
           <div class="text-wrapper-9">시리즈</div>
           </a>
           <div class="text-wrapper-9">영화</div>
-          <!--
-          <a href='/hubflix/chatbot'>
+          
+          <a href='http://127.0.0.1:5000'>
           <div class="text-wrapper-9">AI 추천</div>
-          </a>-->
+          </a>
           <a href='/hubflix/user_detail'>
           <div class="text-wrapper-10">마이페이지</div>
           </a>
