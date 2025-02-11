@@ -2,6 +2,9 @@
 Capstone Design
 Dong-Eui University Computer Engineering
 
+[캡스톤디자인 3조 결과보고서 PPT.pptx](https://github.com/user-attachments/files/18746214/3.PPT.pptx)
+
+
 1. django 프로젝트의 manage.py 파일이 있는 경로로 이동하여 python manage.py runserver를 입력하여 서버를 실행합니다.
 2. 새 cmd를 켜고 chatbot/movie/Scripts 경로로 이동하여 activate를 입력합니다. (flask의 가상환경 구동)
 3. cd .. 을 두 번 입력하고 flask --debug run을 입력하여 서버를 실행합니다.
